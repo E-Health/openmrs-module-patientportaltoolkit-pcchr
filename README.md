@@ -1,4 +1,5 @@
-# openmrs-module-patientportaltoolkit
+# openmrs-module-patientportaltoolkit-pcchr
+** Patient Controlled And Contributed Health Record **
 
 > ## Work in progress. Please do not install. If you are looking for any openMRS 2.x module, please [try skinhelpdesk!](https://github.com/dermatologist/openmrs-module-skinhelpdesk)
 
@@ -8,7 +9,7 @@
 
 openMRS is a highly customizable EMR platform that can be extended and customized by user-contributed modules. More details here: [http://openmrs.org](http://openmrs.org)
 
-## What is openmrs-module-patientportaltoolkit?
+## What is openmrs-module-patientportaltoolkit-pcchr?
 
 This is a fork of https://github.com/maurya/openmrs-module-patientportaltoolkit that combines openmrs-module-personalhr/phrjournal/messagingphr and lancearmstrong
 
