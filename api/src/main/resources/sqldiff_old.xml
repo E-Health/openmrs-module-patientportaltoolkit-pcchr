@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqldiff PUBLIC "-//OpenMRS//DTD OpenMRS SQL Diff Config 1.0//EN" "http://resources.openmrs.org/doctype/sqldiff-1.0.dtd">
+
+<sqldiff version="1.0">
+	<help>
+		USE:
+The diffs are ordered by datamodel version number.
+The script can be run in a top down fashion and is
+expected to not failor overwrite old data
+		
+		EXPECT:
+- "use business-database-name;" was called prior to
+   calling this script
+	</help>
+	
+	<diff>
+		<version>1.0.0</version>
+		<author>Hui Xiao</author>
+		<date>Nov 22 2010</date>
+		<description>
+Create phr_sharing_token table, for storing patient initiated relationships and data sharing authorization
+		</description>
+		<sql>	
+drop table phr_sharing_token;	
+CREATE TABLE IF NOT EXISTS `phr_sharing_token` (
+  `id` int(11) NOT NULL auto_increment,
+  `sharing_token` varchar(30),
+  `patient_id` int(11) NOT NULL default '0',
+  `relationship_person_id` int(11) NULL,
+  `relationship_person_name` varchar(100),
+  `relationship_person_email` varchar(100),
+  `relationship_type` varchar(50),
+  `share_start_date` datetime NOT NULL default '2000-01-01 00:00:00',
+  `share_activate_date` datetime,
+  `share_expire_date` datetime NOT NULL default '2000-01-01 00:00:00',
+  `creator` int(11) NOT NULL default '0',
+  `share_type` varchar(30),
+  `date_created` datetime NOT NULL default '2000-01-01 00:00:00',
+  `changed_by` int(11) default NULL,
+    `date_changed` datetime default NULL,
+  `retired` tinyint(1) NOT NULL default '0',
+  `uuid` char(38),
+  `retired_by` int(11) default NULL,
+  `date_retired` datetime default NULL,
+  `retire_reason` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `User who created phr_sharing_token` (`creator`),
+  KEY `Token used by 3rd party` (`sharing_token`),
+  KEY `Patient who initiated relationship and sharing` (`patient_id`),
+  KEY `Person with whom the patient specified a relationship` (`relationship_person_id`),
+  KEY `User who changed phr_sharing_token` (`changed_by`),
+  CONSTRAINT `User who created phr_sharing_token` FOREIGN KEY (`creator`) REFERENCES `users` (`user_id`),
+  CONSTRAINT `Patient who initiated relationship and sharing` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`patient_id`),
+  CONSTRAINT `Person with whom the patient specified a relationship` FOREIGN KEY (`relationship_person_id`) REFERENCES `person` (`person_id`),
+  CONSTRAINT `User who changed phr_sharing_token` FOREIGN KEY (`changed_by`) REFERENCES `users` (`user_id`),
+              CONSTRAINT `User who retired phr_sharing_token` FOREIGN KEY (`retired_by`) REFERENCES `users` (`user_id`),  
+  UNIQUE (`sharing_token`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into phr_sharing_token(sharing_token,patient_id,relationship_person_id,relationship_person_name,relationship_person_email,relationship_type,share_start_date,share_type,creator) values ('larmstrongtomsmith',4,5,'Mike Smith','hxiao@regenstrief.org','Doctor','2010-10-01 00:00:00','Share Medical,Share Journal',1);
+insert into phr_sharing_token(sharing_token,patient_id,relationship_person_id,relationship_person_name,relationship_person_email,relationship_type,share_start_date,share_type,creator) values ('larmstrongtohxiao',4,7,'Hui Xiao','hxiao@regenstrief.org','Caregiver','2010-10-01 00:00:00','Share Medical',1);
+		</sql>
+	</diff>
+	
+	<diff>
+		<version>1.0.0</version>
+		<author>Hui Xiao</author>
+		<date>Nov 22 2010</date>
+		<description>
+Create phr_security_rule  table, for storing dynamic role based security configuration (PHR privilege *--* PHR dynamic role)
+		</description>
+		<sql>	
+drop table phr_security_rule;	
+CREATE TABLE IF NOT EXISTS `phr_security_rule` (
+  `id` int(11) NOT NULL auto_increment,
+  `privilege` varchar(100),
+  `required_role` varchar(100),
+  `description` varchar(100),
+  `creator` int(11) NOT NULL default '0',
+  `date_created` datetime NOT NULL default '2000-01-01 00:00:00',
+  `changed_by` int(11) default NULL,
+    `date_changed` datetime default NULL,
+  `retired` tinyint(1) NOT NULL default '0',
+  `uuid` char(38),
+  `retired_by` int(11) default NULL,
+  `date_retired` datetime default NULL,
+  `retire_reason` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `User who created phr_security_rule` (`creator`),
+  KEY `name of privilege` (`privilege`),
+  KEY `name of a dynamic role required` (`required_role`),
+  CONSTRAINT `User who created phr_security_rule` FOREIGN KEY (`creator`) REFERENCES `users` (`user_id`),
+  CONSTRAINT `User who changed phr_security_rule` FOREIGN KEY (`changed_by`) REFERENCES `users` (`user_id`),
+              CONSTRAINT `User who retired phr_security_rule` FOREIGN KEY (`retired_by`) REFERENCES `users` (`user_id`)                
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into phr_security_rule (privilege, required_role, creator) values ('Create/Delete Treatment Summary','Administrator, Owner, Share Medical',1);
+insert into phr_security_rule (privilege, required_role, creator) values ('Edit Treatment Summary','Administrator, Owner',1);
+insert into phr_security_rule (privilege, required_role, creator) values ('View Treatment Summary','Administrator, Owner, Share Medical',1);
+insert into phr_security_rule (privilege, required_role, creator) values ('View Side Effects','Administrator, Owner, Share Medical',1);
+insert into phr_security_rule (privilege, required_role, creator) values ('Update Follow-up Care','Administrator, Owner',1);
+insert into phr_security_rule (privilege, required_role, creator) values ('View Follow-up Care','Administrator, Owner, Share Medical',1);
+insert into phr_security_rule (privilege, required_role, creator) values ('Create Relationships','Administrator, Owner',1);
+insert into phr_security_rule (privilege, required_role, creator) values ('View Relationships','Administrator, Owner',1);
+insert into phr_security_rule (privilege, required_role, creator) values ('Edit Journal','Administrator, Owner, Share Journal',1);
+insert into phr_security_rule (privilege, required_role, creator) values ('View Journal','Administrator, Owner, Share Medical, Share Journal',1);
+insert into phr_security_rule (privilege, required_role, creator) values ('Create Messages','Administrator, Owner',1);
+insert into phr_security_rule (privilege, required_role, creator) values ('View Messages','Administrator, Owner',1);
+insert into phr_security_rule (privilege, required_role, creator) values ('PHR Authenticated','Administrator, Owner, Share Medical, Share Journal',1);
+insert into phr_security_rule (privilege, required_role, creator) values ('PHR Administrator','Administrator',1);
+		</sql>
+	</diff>
+	
+	<diff>
+		<version>1.0.0</version>
+		<author>Hui Xiao</author>
+		<date>Nov 22 2010</date>
+		<description>
+Create phr_allowed_url  table, for storing dynamic role based security configuration (PHR allowed URL *--* PHR privilege)
+		</description>
+		<sql>	
+		    drop table 	phr_allowed_url;	
+CREATE TABLE IF NOT EXISTS `phr_allowed_url` (
+  `id` int(11) NOT NULL auto_increment,
+  `allowed_url` varchar(200),
+  `required_privilege` varchar(100),
+  `description` varchar(100),
+  `creator` int(11) NOT NULL default '0',
+  `date_created` datetime NOT NULL default '2000-01-01 00:00:00',
+  `changed_by` int(11) default NULL,
+    `date_changed` datetime default NULL,
+  `retired` tinyint(1) NOT NULL default '0',
+  `uuid` char(38),
+  `retired_by` int(11) default NULL,
+  `date_retired` datetime default NULL,
+  `retire_reason` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `User who created phr_allowed_url` (`creator`),
+  KEY `Name of privilege required` (`required_privilege`),
+  KEY `URL allowed for PHR user to access` (`allowed_url`),
+  CONSTRAINT `User who created phr_allowed_url` FOREIGN KEY (`creator`) REFERENCES `users` (`user_id`),
+  CONSTRAINT `User who changed phr_allowed_url` FOREIGN KEY (`changed_by`) REFERENCES `users` (`user_id`),
+              CONSTRAINT `User who retired phr_allowed_url` FOREIGN KEY (`retired_by`) REFERENCES `users` (`user_id`)  
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/module/lancearmstrong/*','View Treatment Summary',1,'used by lancearmstrong module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/module/htmlformentry/*','View Treatment Summary',1,'used by lancearmstrong module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/module/htmlformflowsheet/*','View Treatment Summary',1,'used by lancearmstrong module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/module/messaging/*','View Messages',1,'used by messaging module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/module/messagingphr/*','View Messages',1,'used by messaginphr module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/module/journaling/*','View Journal',1,'used by journal module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/DWRModuleMessageService*','View Messages',1,'used by messaging module');	
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/DWRMessagingAddressService*','View Messages',1,'used by messaging module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/DWRPersonalhrService*','Manage Modules',1,'Not a PHR privilege; used by personalhr module in admin page');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/DWRLafService*','View Treatment Summary',1,'used by lancearmstrong module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/HtmlFlowsheetDWR*','View Treatment Summary',1,'used by lancearmstrong module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/DWRHtmlFormEntryService*','View Treatment Summary',1,'used by lancearmstrong module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/DWRPatientService*','PHR Administrator',1,'used by personalhr module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/DWRPersonService*','PHR Administrator',1,'used by personalhr module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/DWRUserService*','PHR Administrator',1,'used by personalhr module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/DWRConceptService*','PHR Authenticated',1,'used by personalhr module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/moduleResources/htmlformflowsheet/*','View Treatment Summary',1,'used by lancearmstrong module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/module/phrjournal/*','View Journal',1,'used by phrjournal module');
+insert into phr_allowed_url (allowed_url,required_privilege,creator,description) values ('/DWRJournalEntryService*','View Journal',1,'used by phrjournal module');
+        </sql>
+	</diff>
+	<diff>
+		<version>1.0.0</version>
+		<author>Hui Xiao</author>
+		<date>Nov 22 2010</date>
+		<description>
+Insert a new logic rule token
+		</description>
+		<sql>	
+insert into logic_rule_token (creator, date_created, token, class_name) values (1, now(), 'Follow-up Care Alert', 'org.openmrs.module.lancearmstrong.FollowupCareAlertRule');
+        </sql>
+	</diff>
+	
+</sqldiff>
