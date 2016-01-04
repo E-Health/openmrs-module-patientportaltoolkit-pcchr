@@ -9,7 +9,8 @@
 
             <div class="modal-body">
                 <input id="genHistEncounterHolder" type="hidden" value="">
-                <% if (latestTreatmentSummary.obs) { %>
+< % if (latestTreatmentSummary && latestTreatmentSummary.obs) {
+    % >
                 <% latestTreatmentSummary.obs.each { obs -> %>
                 <% /* cancer Type*/ %>
                 <% if (obs.concept.uuid=="cdf6d767-2aa3-40b6-ae78-0386eebe2411") { %>
