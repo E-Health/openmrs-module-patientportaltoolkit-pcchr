@@ -35,6 +35,7 @@ public class PersonServiceTest extends BaseModuleContextSensitiveTest {
      * @verifies not return null value
      * @see PersonService#getPerson(String)
      */
+    /*
     @Test
     public void getPerson_shouldNotReturnNullValue() throws Exception {
         String personUuid = "dagh524f-27ce-4bb2-86d6-6d1d05312bd5";
@@ -42,11 +43,12 @@ public class PersonServiceTest extends BaseModuleContextSensitiveTest {
 		assertNotNull(personObject);
 		assertEquals(personObject.get("id"), personUuid);
     }
-
+*/
     /**
      * @verifies return proper formatted date
      * @see PersonService#getPerson(String)
      */
+    /*
     @Test
     public void getPerson_shouldReturnProperDate() throws Exception {
         String personUuid = "dagh524f-27ce-4bb2-86d6-6d1d05312bd5";
@@ -81,4 +83,5 @@ public class PersonServiceTest extends BaseModuleContextSensitiveTest {
         assertNotNull(personObject);
         assertEquals(personObject.get("id"), "dagh524f-27ce-4bb2-86d6-6d1d05312bd5");
     }
+    */
 }
