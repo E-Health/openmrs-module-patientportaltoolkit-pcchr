@@ -4,11 +4,16 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.Encounter;
 import org.openmrs.Obs;
+import org.openmrs.Patient;
 import org.openmrs.api.ConceptService;
 import org.openmrs.api.EncounterService;
 import org.openmrs.api.ObsService;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.patientportaltoolkit.PatientPortalToolkitConstants;
+import org.openmrs.module.patientportaltoolkit.api.PatientPortalFormService;
+import org.openmrs.module.patientportaltoolkit.api.util.GenerateTreatmentClassesUtil;
 import org.openmrs.ui.framework.fragment.FragmentModel;
+import org.openmrs.ui.framework.page.PageModel;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.ParseException;
@@ -22,8 +27,26 @@ public class GenHistoryModalFragmentController {
 
     protected final Log log = LogFactory.getLog(getClass());
 
-    public void controller() {
-
+    public void controller(PageModel model) {
+        Patient patient = null;
+        patient = Context.getPatientService().getPatientByUuid(Context.getAuthenticatedUser().getPerson().getUuid());
+        PatientPortalFormService patientPortalFormService = Context.getService(PatientPortalFormService.class);
+        if (patient != null) {
+            model.addAttribute("surgeryConcepts", patientPortalFormService.getPatientPortalFormByFormType(PatientPortalToolkitConstants.SURGERY_ENCOUNTER));
+            model.addAttribute("chemotherapyConcepts", patientPortalFormService.getPatientPortalFormByFormType(PatientPortalToolkitConstants.CHEMOTHERAPY_ENCOUNTER));
+            model.addAttribute("radiationConcepts", patientPortalFormService.getPatientPortalFormByFormType(PatientPortalToolkitConstants.RADIATION_ENCOUNTER));
+            model.addAttribute("latestTreatmentSummary", GenerateTreatmentClassesUtil.generateLatestGeneralHistory(patient));
+            model.addAttribute("treatmentsummary", GenerateTreatmentClassesUtil.generateGeneralHistory(patient));
+            model.addAttribute("radiationencounters", GenerateTreatmentClassesUtil.generateRadiations(patient));
+            model.addAttribute("surgeryencounters", GenerateTreatmentClassesUtil.generateSurgeries(patient));
+            model.addAttribute("chemotherapyencounters", GenerateTreatmentClassesUtil.generateChemotherapies(patient));
+        } else {
+            model.addAttribute("treatmentsummary", null);
+            model.addAttribute("latestTreatmentSummary", null);
+            model.addAttribute("radiationencounters", null);
+            model.addAttribute("surgeryencounters", null);
+            model.addAttribute("chemotherapyencounters", null);
+        }
     }
 
     public void saveGenHistoryForm(FragmentModel model,  @RequestParam(value = "encounterId", required = true) String encounterId,

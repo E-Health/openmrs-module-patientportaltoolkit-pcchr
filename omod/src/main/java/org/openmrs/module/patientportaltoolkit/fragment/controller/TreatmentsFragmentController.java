@@ -32,6 +32,7 @@ public class TreatmentsFragmentController {
         }
         else {
             model.addAttribute("treatmentsummary",null);
+            model.addAttribute("latestTreatmentSummary", null);
             model.addAttribute("radiationencounters",null);
             model.addAttribute("surgeryencounters",null);
             model.addAttribute("chemotherapyencounters",null);
