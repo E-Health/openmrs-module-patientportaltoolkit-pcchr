@@ -2,7 +2,7 @@
 
 > ## Work in progress. Please do not install. If you are looking for any openMRS 2.x module, please [try skinhelpdesk!](https://github.com/dermatologist/openmrs-module-skinhelpdesk)
 
-![HL10 Framework](https://raw.github.com/nuchange/openmrs-module-patientportaltoolkit/master/docs/hl10-github.png)
+![HL10 Framework](https://raw.github.com/E-Health/openmrs-module-patientportaltoolkit-pcchr/master/docs/hl10-github.png)
 
 ## What is openMRS?
 
