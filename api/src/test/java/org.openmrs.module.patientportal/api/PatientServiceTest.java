@@ -37,6 +37,8 @@ public class PatientServiceTest extends BaseModuleContextSensitiveTest {
      * @verifies not return null value
      * @see PatientService#getPatient(String)
      */
+
+    /*
     @Test
     public void getPatient_shouldNotReturnNullValue() throws Exception {
         String patientUuid = "61b38324-e2fd-4feb-95b7-9e9a2a4400df";
@@ -44,6 +46,7 @@ public class PatientServiceTest extends BaseModuleContextSensitiveTest {
         assertNotNull(patientObject);
         assertEquals(patientObject.get("id"), patientUuid);
     }
+    */
 
     @Test
     public void getAllPatients_shouldNotReturnNullValue() throws Exception {
