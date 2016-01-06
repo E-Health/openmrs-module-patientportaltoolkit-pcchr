@@ -28,7 +28,7 @@
             </column>
             <column name="dataName" type="varchar(255)" />
             <column name="dataCode" type="varchar(40)" />
-            <column defaultValue="ICD10" name="dataNs" type="ENUM('SNOMED', 'ICD10', 'ICD9')">
+            <column defaultValue="ICD10" name="dataNs" type="varchar(40)">
                 <constraints nullable="false"/>
             </column>
             <column defaultValue="default" name="dataUnit" type="varchar(255)" />
@@ -41,7 +41,7 @@
             <column name="dateTimeData" type="datetime" />
             <column name="segmentName" type="varchar(255)" />
             <column name="segmentCode" type="varchar(40)" />
-            <column defaultValue="ICD10" name="segmentNs" type="ENUM('SNOMED', 'ICD10', 'ICD9')">
+            <column defaultValue="ICD10" name="segmentNs" type="varchar(40)">
                 <constraints nullable="false"/>
             </column>
             <column defaultValue="0" name="index" type="int" />

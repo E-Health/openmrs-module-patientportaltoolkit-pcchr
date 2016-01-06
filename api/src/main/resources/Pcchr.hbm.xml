@@ -10,50 +10,38 @@
         <discriminator column="id" insert="false" />
         <property name="uuid" type="java.lang.String" column="uuid"
             length="38" unique="true" />
-        <many-to-one name="patient" column="patientid" class="org.openmrs.Patient" />
+        <many-to-one name="patient" column="patientId" class="org.openmrs.Patient" />
+        <property name="patientUuid" type="java.lang.String" column="patientUuid" length="38" />
+        <property name="profilerId" type="int" column="profilerId" />
+        <property name="profilerUuid" type="java.lang.String" column="profilerUuid" length="38" />
+        <property name="startTime" type="java.util.Date" column="startTime"
+                  length="38" />
+        <property name="endTime" type="java.util.Date" column="endTime"
+                  length="38" />        
+        <property name="dataType" type="java.lang.String" column="dataType" length="1" />
+        <property name="dataType" column="dataType">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">org.openmrs.patientportaltoolkit.Pcchr.DataType</param>
+                <param name="useNamed">true</param>
+             </type>
+        </property>
+        <property name="dataName" type="java.lang.String" column="dataName" length="255" />
+        <property name="dataCode" type="java.lang.String" column="dataCode" length="40" />
+        <property name="dataNs" type="java.lang.String" column="dataNs" length="255" />
+        <property name="dataUnit" type="java.lang.String" column="dataUnit" length="255" />
+        <property name="dataUnitNs" type="java.lang.String" column="dataUnitNs" length="255" />
+        <property name="charData" type="java.lang.String" column="charData" />
+        <property name="numData" type="double" column="numData" />
+        <property name="boolData" type="boolean" column="boolData" length="1"/>
+        <property name="dateTimeData" type="java.util.Date" column="dateTimeData" length="38" />
+        <property name="segmentName" type="java.lang.String" column="segmentName" length="255" />
+        <property name="segmentCode" type="java.lang.String" column="segmentCode" length="40" />
+        <property name="segmentNs" type="java.lang.String" column="segmentNs" length="40" />
+        <property name="index" type="int" column="index"   not-null="false" />
+        <property name="prevUuid" type="java.lang.String" column="prevUuid" length="38" />
+        <property name="status" type="java.lang.String" column="status" length="255" />
 
-
-
-        <property name="parentEntryId" type="int" column="parent_entry_id"   not-null="false" />
-        <property name="uuid" type="string" length="38" not-null="true" />
-
-        <property name="title" type="java.lang.String"/>
-        <property name="content" type="text"/>
-        <many-to-one name="creator" class="org.openmrs.Person" lazy="false" not-null="true"/>
-        <property name="dateCreated" column="date_created" type="java.util.Date" length="19"/>
-        <property name="deleted" type="boolean" length="1"/>
-        <property name="dateDeleted" column="date_deleted" type="java.util.Date" length="19"/>
-        <set name="children" table="patientportal_journal_entry"
-             inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="parent_entry_id" not-null="true" />
-            </key>
-            <one-to-many class="JournalEntry" />
-        </set>
     </class>
 -->
-
-<!--
-    <class name="SkinHelpDesk"
-        table="skinhelpdesk">
-        <id name="id" type="int" column="id" unsaved-value="0">
-            <generator class="native" />
-        </id>
-        <discriminator column="id" insert="false" />
-        <property name="uuid" type="java.lang.String" column="uuid"
-            length="38" unique="true" />
-        <property name="lesionId" type="java.lang.Integer" column="lesionid"
-                  length="10" unique="true" />
-        
-        <many-to-one name="patient" column="patientid" unique="true" class="org.openmrs.Patient" not-null="true"/>
-
-        <property name="lesionMap" type="java.lang.String" column="lesionmap" />
-        <property name="createdOn" type="java.util.Date" column="createdon"
-                  length="38" />
-        <property name="updatedOn" type="java.util.Date" column="updatedon"
-                  length="38" />
-        <property name="updatedBy" type="java.lang.String" column="updatedby"
-                  length="38" />
-    </class>
--->    
+    
 </hibernate-mapping>
