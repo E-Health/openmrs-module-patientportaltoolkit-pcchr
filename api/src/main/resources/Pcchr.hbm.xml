@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.openmrs.module.patientportaltoolkit">
+    <!--
+    <class table="hl10Profiler" name="Pcchr">
+        <id name="id" type="int" column="entry_id"  unsaved-value="0">
+            <generator class="native" />
+        </id>
+        <discriminator column="id" insert="false" />
+        <property name="uuid" type="java.lang.String" column="uuid"
+            length="38" unique="true" />
+        <many-to-one name="patient" column="patientId" class="org.openmrs.Patient" />
+        <property name="patientUuid" type="java.lang.String" column="patientUuid" length="38" />
+        <property name="profilerId" type="int" column="profilerId" />
+        <property name="profilerUuid" type="java.lang.String" column="profilerUuid" length="38" />
+        <property name="startTime" type="java.util.Date" column="startTime"
+                  length="38" />
+        <property name="endTime" type="java.util.Date" column="endTime"
+                  length="38" />        
+        <property name="dataType" type="java.lang.String" column="dataType" length="1" />
+        <property name="dataType" column="dataType">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">org.openmrs.patientportaltoolkit.Pcchr.DataType</param>
+                <param name="useNamed">true</param>
+             </type>
+        </property>
+        <property name="dataName" type="java.lang.String" column="dataName" length="255" />
+        <property name="dataCode" type="java.lang.String" column="dataCode" length="40" />
+        <property name="dataNs" type="java.lang.String" column="dataNs" length="255" />
+        <property name="dataUnit" type="java.lang.String" column="dataUnit" length="255" />
+        <property name="dataUnitNs" type="java.lang.String" column="dataUnitNs" length="255" />
+        <property name="charData" type="java.lang.String" column="charData" />
+        <property name="numData" type="double" column="numData" />
+        <property name="boolData" type="boolean" column="boolData" length="1"/>
+        <property name="dateTimeData" type="java.util.Date" column="dateTimeData" length="38" />
+        <property name="segmentName" type="java.lang.String" column="segmentName" length="255" />
+        <property name="segmentCode" type="java.lang.String" column="segmentCode" length="40" />
+        <property name="segmentNs" type="java.lang.String" column="segmentNs" length="40" />
+        <property name="index" type="int" column="index"   not-null="false" />
+        <property name="prevUuid" type="java.lang.String" column="prevUuid" length="38" />
+        <property name="status" type="java.lang.String" column="status" length="255" />
+
+    </class>
+-->
+    
+</hibernate-mapping>

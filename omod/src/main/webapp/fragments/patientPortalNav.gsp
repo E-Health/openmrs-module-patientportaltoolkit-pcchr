@@ -50,7 +50,7 @@
         <ul class="nav navbar-nav">
             <li id="patientPortalJournals"><a href="journals.page">Home</a></li>
             <li id="patientPortalNavHome"><a href="home.page">Profile</a></li>
-            <li id="patientPortalConnections"><a href="patientconnections.page">Connections</a></li>
+            <li id="patientPortalConnections"><a href="patientconnections.page">Circle of Care</a></li>
             </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="messages.page"><span class="glyphicon glyphicon-envelope"></span></a></li>
