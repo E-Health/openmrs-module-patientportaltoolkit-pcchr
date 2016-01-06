@@ -36,6 +36,9 @@ Expect more on [my blog ](http://nuchange.ca) and the [Prodents wiki](http://wik
 	- mvn openmrs-sdk:run
 	- Import project to IDE as a maven project
 
+	- Login with admin/Admin123 at http://localhost:8080/openmrs
+	- Click on 'PHR Icon on homepage'
+
 
 ## How do I learn more and Contribute
 
