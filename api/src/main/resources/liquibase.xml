@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <!--
+        See http://www.liquibase.org/manual/home#available_database_refactorings
+        for a list of supported elements and attributes
+    
+    <changeSet author="beapen" id="20160105-1">
+        <comment>Create the HL10 Profiler Table.
+            http://nuchange.ca/2015/10/hl10-what-is-it.html
+        </comment>
+        <createTable tableName="hl10Profiler">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="uuid" type="char(38)" />
+            <column name="patientId" type="char(38)" />
+            <column name="patientUuid" type="char(38)" />
+            <column name="profilerId" type="char(38)" />
+            <column name="profilerUuid" type="char(38)" />
+            <column name="startTime" type="datetime" />
+            <column name="endTime" type="datetime" />
+            <column defaultValue="C" name="dataType" type="ENUM('C', 'N', 'B', 'D')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dataName" type="varchar(255)" />
+            <column name="dataCode" type="varchar(40)" />
+            <column defaultValue="ICD10" name="dataNs" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="default" name="dataUnit" type="varchar(255)" />
+            <column defaultValue="SI" name="dataUnitNs" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="charData" type="text" />
+            <column name="numData" type="double" />
+            <column name="booldata" type="boolean" />
+            <column name="dateTimeData" type="datetime" />
+            <column name="segmentName" type="varchar(255)" />
+            <column name="segmentCode" type="varchar(40)" />
+            <column defaultValue="ICD10" name="segmentNs" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="0" name="index" type="int" />
+            <column name="prevUuid" type="char(38)" />
+            <column defaultValue="default" name="status" type="varchar(255)" />
+        </createTable>
+
+    </changeSet>
+    -->
+
+</databaseChangeLog>
