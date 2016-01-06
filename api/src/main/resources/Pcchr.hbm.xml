@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.openmrs.module.patientportaltoolkit">
+    <!--
+    <class table="hl10Profiler" name="Pcchr">
+        <id name="id" type="int" column="entry_id"  unsaved-value="0">
+            <generator class="native" />
+        </id>
+        <discriminator column="id" insert="false" />
+        <property name="uuid" type="java.lang.String" column="uuid"
+            length="38" unique="true" />
+        <many-to-one name="patient" column="patientid" class="org.openmrs.Patient" />
+
+
+
+        <property name="parentEntryId" type="int" column="parent_entry_id"   not-null="false" />
+        <property name="uuid" type="string" length="38" not-null="true" />
+
+        <property name="title" type="java.lang.String"/>
+        <property name="content" type="text"/>
+        <many-to-one name="creator" class="org.openmrs.Person" lazy="false" not-null="true"/>
+        <property name="dateCreated" column="date_created" type="java.util.Date" length="19"/>
+        <property name="deleted" type="boolean" length="1"/>
+        <property name="dateDeleted" column="date_deleted" type="java.util.Date" length="19"/>
+        <set name="children" table="patientportal_journal_entry"
+             inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="parent_entry_id" not-null="true" />
+            </key>
+            <one-to-many class="JournalEntry" />
+        </set>
+    </class>
+-->
+
+<!--
+    <class name="SkinHelpDesk"
+        table="skinhelpdesk">
+        <id name="id" type="int" column="id" unsaved-value="0">
+            <generator class="native" />
+        </id>
+        <discriminator column="id" insert="false" />
+        <property name="uuid" type="java.lang.String" column="uuid"
+            length="38" unique="true" />
+        <property name="lesionId" type="java.lang.Integer" column="lesionid"
+                  length="10" unique="true" />
+        
+        <many-to-one name="patient" column="patientid" unique="true" class="org.openmrs.Patient" not-null="true"/>
+
+        <property name="lesionMap" type="java.lang.String" column="lesionmap" />
+        <property name="createdOn" type="java.util.Date" column="createdon"
+                  length="38" />
+        <property name="updatedOn" type="java.util.Date" column="updatedon"
+                  length="38" />
+        <property name="updatedBy" type="java.lang.String" column="updatedby"
+                  length="38" />
+    </class>
+-->    
+</hibernate-mapping>
