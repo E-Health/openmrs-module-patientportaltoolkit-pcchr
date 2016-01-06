@@ -4,7 +4,7 @@
 
 ## Profiler data model
 
-### hl10ProfilerMetaData
+### hl10Profiler
 
 - id (PK)
 - uuid
@@ -20,20 +20,16 @@
 - dataNs (SNOMED / ICD10)
 - dataUnit
 - dataUnitNs
-- status (PROCESSED, PENDING, etc)
-
-### hl10ProfilerData
-
-- id (PK)
-- uuid
-- metaDataid (FK)
 - charData
 - numData
 - boolData
 - dateTimeData
-- dataSegmentName
-- dataSegmentCode
-- dataSegmentNs (SNOMED / ICD10)
+- segmentName
+- segmentCode
+- segmentNs (SNOMED / ICD10)
+- index 0 (If 0 no further, -1 last packet, All others in sequence)
+- prevUuid
+- status (PROCESSED, PENDING, etc)
 
 ## Resources
 https://github.com/openmrs/openmrs-module-reporting/blob/master/api/src/main/resources/liquibase.xml (Good compilation of liquibase commands)
