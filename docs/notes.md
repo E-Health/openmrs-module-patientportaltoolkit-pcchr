@@ -8,13 +8,13 @@
 
 - id (PK)
 - uuid
-- patientid
+- patientId
 - patientUuid
-- profilerid
+- profilerId
 - profilerUuid
 - startTime
 - endTime
-- dataType (C/R/B/DT)
+- dataType (C/N/B/D)
 - dataName
 - dataCode
 - dataNs (SNOMED / ICD10)
@@ -35,3 +35,5 @@
 - dataSegmentCode
 - dataSegmentNs (SNOMED / ICD10)
 
+## Resources
+https://github.com/openmrs/openmrs-module-reporting/blob/master/api/src/main/resources/liquibase.xml (Good compilation of liquibase commands)
