@@ -7,61 +7,65 @@
  * Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
  * graphic logo is a trademark of OpenMRS Inc.
  */
-package org.openmrs.module.skinhelpdesk.api.db.hibernate;
+package org.openmrs.module.patientportaltoolkit.api.db.hibernate;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.openmrs.Patient;
-import org.openmrs.module.skinhelpdesk.SkinHelpDesk;
-import org.openmrs.module.skinhelpdesk.api.db.SkinHelpDeskDAO;
+import org.openmrs.Person;
+import org.openmrs.module.patientportaltoolkit.Pcchr;
+import org.openmrs.module.patientportaltoolkit.api.db.PcchrDAO;
+
+
+import java.util.List;
 
 /**
- * It is a default implementation of  {@link SkinHelpDeskDAO}.
+ * It is a default implementation of  {@link PcchrDAO}.
  */
 
-public class HibernatePcchrDAO implements SkinHelpDeskDAO {
+public class HibernatePcchrDAO implements PcchrDAO {
 	protected final Log log = LogFactory.getLog(this.getClass());
-	
 	private SessionFactory sessionFactory;
-	
 	/**
-     * @param sessionFactory the sessionFactory to set
-     */
-    public void setSessionFactory(SessionFactory sessionFactory) {
-	    this.sessionFactory = sessionFactory;
-    }
-    
-	/**
-     * @return the sessionFactory
-     */
-    public SessionFactory getSessionFactory() {
-	    return sessionFactory;
-    }
-
-	/**
-	 * @see org.openmrs.module.skinhelpdesk.api.db.SkinHelpDeskDAO#getLesionmap(org.openmrs.Patient)
+	 * @param sessionFactory the sessionFactory to set
 	 */
-	@Override
-	public SkinHelpDesk getLesionmap(Patient patient) {
-        //return (SkinHelpDesk) sessionFactory.getCurrentSession().createQuery("from skinhelpdesk where patientid = " + patientId).uniqueResult();
-		return (SkinHelpDesk) sessionFactory.getCurrentSession().createCriteria(SkinHelpDesk.class).add(Restrictions.eq("patient", patient)).uniqueResult();
-
-    }
-	/**
-	 * @see org.openmrs.module.skinhelpdesk.api.db.SkinHelpDeskDAO#saveLesionmap(org.openmrs.module.skinhelpdesk.SkinHelpDesk)
-	 */
-	@Override
-	public SkinHelpDesk saveLesionmap(SkinHelpDesk lesionmap) {
-		sessionFactory.getCurrentSession().saveOrUpdate(lesionmap);
-		return lesionmap;
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 	/**
-	 * @see org.openmrs.module.skinhelpdesk.api.db.SkinHelpDeskDAO#purgeLesionmap(org.openmrs.module.skinhelpdesk.SkinHelpDesk)
+	 * @return the sessionFactory
+	 */
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+	/**
+	 * @see org.openmrs.module.patientportaltoolkit.api.db.PcchrDAO#getAllPcchrs()
 	 */
 	@Override
-	public void purgeLesionmap(SkinHelpDesk lesionmap) {
-		sessionFactory.getCurrentSession().delete(lesionmap);
+	public List<Pcchr> getAllPcchrs(Person user) {
+		return sessionFactory.getCurrentSession().createCriteria(Pcchr.class).list();
 	}
-}
+	/**
+	 * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getPcchr(java.lang.Integer)
+	 */
+	@Override
+	public Pcchr getPcchr(Integer pcchrId) {
+		return (Pcchr) sessionFactory.getCurrentSession().get(Pcchr.class, pcchrId);
+	}
+	/**
+	 * @see org.openmrs.module.patientportaltoolkit.api.db.PcchrDAO#savePcchr(org.openmrs.module.patientportaltoolkit.Pcchr)
+	 */
+	@Override
+	public Pcchr saveDepartment(Pcchr pcchr) {
+		sessionFactory.getCurrentSession().save(pcchr);
+		return pcchr;
+	}
+	/**
+	 * @see org.openmrs.module.patientportaltoolkit.api.db.PcchrDAO#purgePcchr(org.openmrs.module.patientportaltoolkit.Pcchr)
+	 */
+	@Override
+	public void purgeDepartment(Pcchr pcchr) {
+		sessionFactory.getCurrentSession().delete(pcchr);
+	}}

@@ -12,12 +12,30 @@ package org.openmrs.module.patientportaltoolkit.api.db;
 import org.springframework.stereotype.Repository;
 import org.openmrs.module.patientportaltoolkit.Pcchr;
 import org.openmrs.module.patientportaltoolkit.api.PcchrService;
+import org.openmrs.Person;
+
+import java.util.List;
 
 /**
  *  Database methods for {@link PcchrService}.
  */
 @Repository
 public interface PcchrDAO {
-
+    /**
+     * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getAllPcchrs(org.openmrs.Person)
+     */
+    List<Pcchr> getAllPcchr(Person user);
+    /**
+     * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getPcchr(java.lang.Integer)
+     */
+    Pcchr getPcchr(Integer pcchrId);
+    /**
+     * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#savePcchr(org.openmrs.module.patientportaltoolkit.Pcchr)
+     */
+    Pcchr savePcchr(Pcchr pcchr);
+    /**
+     * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#purgePcchr(org.openmrs.module.patientportaltoolkit.Pcchr)
+     */
+    void purgePcchr(Pcchr pcchr);
 
 }
