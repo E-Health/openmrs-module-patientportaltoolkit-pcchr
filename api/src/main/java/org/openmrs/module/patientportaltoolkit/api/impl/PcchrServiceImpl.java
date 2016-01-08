@@ -10,18 +10,15 @@
  */
 package org.openmrs.module.patientportaltoolkit.api.impl;
 
-        import org.openmrs.Patient;
-        import org.openmrs.Person;
-        import org.openmrs.api.impl.BaseOpenmrsService;
-        import org.apache.commons.logging.Log;
-        import org.apache.commons.logging.LogFactory;
-        import org.openmrs.module.patientportaltoolkit.Pcchr;
-        import org.openmrs.module.patientportaltoolkit.api.PcchrService;
-        import org.openmrs.module.patientportaltoolkit.api.SkinHelpDeskService;
-        import org.openmrs.module.patientportaltoolkit.api.db.PcchrDAO;
-        import org.openmrs.module.patientportaltoolkit.api.db.SkinHelpDeskDAO;
+import org.openmrs.Person;
+import org.openmrs.api.impl.BaseOpenmrsService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.openmrs.module.patientportaltoolkit.Pcchr;
+import org.openmrs.module.patientportaltoolkit.api.PcchrService;
+import org.openmrs.module.patientportaltoolkit.api.db.PcchrDAO;
 
-        import java.util.List;
+import java.util.List;
 
 /**
  * It is a default implementation of {@link PcchrService}.

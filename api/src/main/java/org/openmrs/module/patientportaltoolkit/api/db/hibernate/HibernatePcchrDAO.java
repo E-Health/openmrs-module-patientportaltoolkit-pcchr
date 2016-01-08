@@ -41,11 +41,11 @@ public class HibernatePcchrDAO implements PcchrDAO {
 		return sessionFactory;
 	}
 	/**
-	 * @see org.openmrs.module.patientportaltoolkit.api.db.PcchrDAO#getAllPcchrs()
+	 * @see org.openmrs.module.patientportaltoolkit.api.db.PcchrDAO#getAllPcchrs(org.openmrs.Person)
 	 */
 	@Override
 	public List<Pcchr> getAllPcchrs(Person user) {
-		return sessionFactory.getCurrentSession().createCriteria(Pcchr.class).list();
+		return sessionFactory.getCurrentSession().createCriteria(Pcchr.class).add(Restrictions.eq("user", user)).list();
 	}
 	/**
 	 * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getPcchr(java.lang.Integer)
@@ -58,7 +58,7 @@ public class HibernatePcchrDAO implements PcchrDAO {
 	 * @see org.openmrs.module.patientportaltoolkit.api.db.PcchrDAO#savePcchr(org.openmrs.module.patientportaltoolkit.Pcchr)
 	 */
 	@Override
-	public Pcchr saveDepartment(Pcchr pcchr) {
+	public Pcchr savePcchr(Pcchr pcchr) {
 		sessionFactory.getCurrentSession().save(pcchr);
 		return pcchr;
 	}
@@ -66,7 +66,7 @@ public class HibernatePcchrDAO implements PcchrDAO {
 	 * @see org.openmrs.module.patientportaltoolkit.api.db.PcchrDAO#purgePcchr(org.openmrs.module.patientportaltoolkit.Pcchr)
 	 */
 	@Override
-	public void purgeDepartment(Pcchr pcchr) {
+	public void purgePcchr(Pcchr pcchr) {
 		sessionFactory.getCurrentSession().delete(pcchr);
 	}
 }
