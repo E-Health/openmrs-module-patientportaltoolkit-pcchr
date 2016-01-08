@@ -1,6 +1,10 @@
 # openmrs-module-patientportaltoolkit-pcchr
 
-> ## Work in progress. Please do not install. If you are looking for any completed and functional openMRS 2.x module, please [try skinhelpdesk!](https://github.com/dermatologist/openmrs-module-skinhelpdesk)
+> ## Work in progress. 
+
+[![Build Status](https://travis-ci.org/E-Health/openmrs-module-patientportaltoolkit-pcchr.svg)](https://travis-ci.org/E-Health/openmrs-module-patientportaltoolkit-pcchr)
+
+#### If you are looking for a completed openMRS 2.x module, please [try skinhelpdesk!](https://github.com/dermatologist/openmrs-module-skinhelpdesk)
 
 ![HL10 Framework](https://raw.github.com/E-Health/openmrs-module-patientportaltoolkit-pcchr/master/docs/hl10-github.png)
 **Dundurn Castle; Hamilton, ON. Photo Credit: beapen**
@@ -25,11 +29,11 @@ Expect more on [my blog ](http://nuchange.ca) and the [Prodents wiki](http://wik
 
 ## How do I test this module / setup a development environment?
 - Install git and git clone https://github.com/E-Health/openmrs-module-patientportaltoolkit-pcchr
-- Follow [these steps.](https://wiki.openmrs.org/display/docs/OpenMRS+SDK)
+- Follow [the steps outlined in this wiki: https://wiki.openmrs.org/display/docs/OpenMRS+SDK](https://wiki.openmrs.org/display/docs/OpenMRS+SDK)
 	- Install mvn & openMRS SDK (Steps 1 & 2)
 	- Install MySQL (Not mentioned in the wiki page)
 	- Create OpenMRS Reference Application 2.x server
-	- cd <module-name>
+	- cd module-name
 	- mvn openmrs-sdk:watch  (If you are doing development)
 	- mvn clean install
 	- mvn openmrs-sdk:install
