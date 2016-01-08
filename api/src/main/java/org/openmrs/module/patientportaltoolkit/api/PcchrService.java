@@ -11,9 +11,12 @@
 package org.openmrs.module.patientportaltoolkit.api;
 
         import org.openmrs.Patient;
+        import org.openmrs.Person;
         import org.openmrs.api.OpenmrsService;
         import org.openmrs.module.patientportaltoolkit.Pcchr;
         import org.springframework.transaction.annotation.Transactional;
+
+        import java.util.List;
 
 /**
  * This service exposes module's core functionality. It is a Spring managed bean which is configured in moduleApplicationContext.xml.
@@ -28,34 +31,33 @@ package org.openmrs.module.patientportaltoolkit.api;
 @Transactional
 public interface PcchrService extends OpenmrsService {
 
-	/*
-	 * Add service methods here
-	 *
-	 */
-
-
     /**
-     * Gets a lesionmap for a given id.
+     * Gets a list of pcchr.
      *
-     * @param patient
-     * @return the lesionmap with the given id
-     * @should return the lesionmap for the patient
+     * @param user from org.openmrs.Person
+     * @return the pcchr list.
      */
     @Transactional(readOnly = true)
-    Pcchr getLesionmap(Patient patient);
+    List<Pcchr> getAllPcchrs(Person user);
     /**
-     * Saves a new or existing lesionmap.
+     * Gets a pcchr for a given id.
      *
-     * @param lesionmap the lesionmap to save.
-     * @return the saved lesionmap.
-     * @should return saved lesionmap
+     * @param id the pcchr id
+     * @return the pcchr with the given id
      */
-    Pcchr saveLesionmap(Pcchr lesionmap);
+    @Transactional(readOnly = true)
+    Pcchr getPcchr(Integer pcchrId);
     /**
-     * Deletes a lesionmap from the database.
+     * Saves a new or existing pcchr.
      *
-     * @param lesionmap the lesionmap to delete.
-     * @should delete the lesionmap
+     * @param pcchr the pcchr to save.
+     * @return the saved pcchr.
      */
-    void purgeLesionmap(Pcchr lesionmap);
+    Pcchr savePcchr(Pcchr pcchr);
+    /**
+     * Deletes a pcchr from the database.
+     *
+     * @param pcchr the pcchr to delete.
+     */
+    void purgePcchr(Pcchr pcchr);
 }

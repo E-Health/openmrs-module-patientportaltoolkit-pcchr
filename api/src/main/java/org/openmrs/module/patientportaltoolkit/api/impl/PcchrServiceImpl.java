@@ -11,13 +11,17 @@
 package org.openmrs.module.patientportaltoolkit.api.impl;
 
         import org.openmrs.Patient;
+        import org.openmrs.Person;
         import org.openmrs.api.impl.BaseOpenmrsService;
         import org.apache.commons.logging.Log;
         import org.apache.commons.logging.LogFactory;
         import org.openmrs.module.patientportaltoolkit.Pcchr;
         import org.openmrs.module.patientportaltoolkit.api.PcchrService;
         import org.openmrs.module.patientportaltoolkit.api.SkinHelpDeskService;
+        import org.openmrs.module.patientportaltoolkit.api.db.PcchrDAO;
         import org.openmrs.module.patientportaltoolkit.api.db.SkinHelpDeskDAO;
+
+        import java.util.List;
 
 /**
  * It is a default implementation of {@link PcchrService}.
@@ -25,43 +29,45 @@ package org.openmrs.module.patientportaltoolkit.api.impl;
 public class PcchrServiceImpl extends BaseOpenmrsService implements PcchrService {
 
     protected final Log log = LogFactory.getLog(this.getClass());
-
-    private SkinHelpDeskDAO dao;
-
+    private PcchrDAO dao;
     /**
      * @param dao the dao to set
      */
-    public void setDao(SkinHelpDeskDAO dao) {
+    public void setDao(PcchrDAO dao) {
         this.dao = dao;
     }
-
     /**
      * @return the dao
      */
-    public SkinHelpDeskDAO getDao() {
+    public PcchrDAO getDao() {
         return dao;
     }
-
-
     /**
-     * @see org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService#getLesionmap(org.openmrs.Patient)
+     * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getAllPcchrs(org.openmrs.Person)
      */
     @Override
-    public SkinHelpDesk getLesionmap(Patient patient) {
-        return dao.getLesionmap(patient);
+    public List<Pcchr> getAllPcchrs(Person user) {
+        return dao.getAllPcchrs(user);
     }
     /**
-     * @see org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService#saveLesionmap(org.openmrs.module.skinhelpdesk.SkinHelpDesk)
+     * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getPcchr(java.lang.Integer)
      */
     @Override
-    public SkinHelpDesk saveLesionmap(SkinHelpDesk lesionmap) {
-        return dao.saveLesionmap(lesionmap);
+    public Pcchr getPcchr(Integer pcchrId) {
+        return dao.getPcchr(pcchrId);
     }
     /**
-     * @see org.openmrs.module.skinhelpdesk.api.SkinHelpDeskService#purgeLesionmap(org.openmrs.module.skinhelpdesk.SkinHelpDesk)
+     * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#savePcchr(org.openmrs.module.patientportaltoolkit.Pcchr)
      */
     @Override
-    public void purgeLesionmap(SkinHelpDesk lesionmap) {
-        dao.purgeLesionmap(lesionmap);
+    public Pcchr savePcchr(Pcchr pcchr) {
+        return dao.savePcchr(pcchr);
+    }
+    /**
+     * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#purgePcchr(org.openmrs.module.patientportaltoolkit.Pcchr)
+     */
+    @Override
+    public void purgePcchr(Pcchr pcchr) {
+        dao.purgePcchr(pcchr);
     }
 }

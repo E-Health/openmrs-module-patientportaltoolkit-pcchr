@@ -68,4 +68,5 @@ public class HibernatePcchrDAO implements PcchrDAO {
 	@Override
 	public void purgeDepartment(Pcchr pcchr) {
 		sessionFactory.getCurrentSession().delete(pcchr);
-	}}
+	}
+}

@@ -24,7 +24,7 @@ public interface PcchrDAO {
     /**
      * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getAllPcchrs(org.openmrs.Person)
      */
-    List<Pcchr> getAllPcchr(Person user);
+    List<Pcchr> getAllPcchrs(Person user);
     /**
      * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getPcchr(java.lang.Integer)
      */
