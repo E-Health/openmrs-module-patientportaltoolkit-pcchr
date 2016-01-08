@@ -11,20 +11,22 @@ package org.openmrs.module.patientportaltoolkit;
 
 import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.BaseOpenmrsObject;
-import org.openmrs.User;
+import org.openmrs.Person;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
  * It is a model class. It should extend either {@link BaseOpenmrsObject} or {@link BaseOpenmrsMetadata}.
+ * Call with Param User and data
  */
 public class Pcchr extends BaseOpenmrsObject implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private Integer id;
-    private User user;
+    private Person user;
     private int profilerId;
     private String profilerUuid;
     private Date startTime;
@@ -32,7 +34,7 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     private DataType dataType;
     private String dataName;
     private String dataCode;
-    private String dataNs;
+    private String dataNs = "SNOMED-CT";
     private String dataUnit;
     private String dataUnitNs;
     private String charData;
@@ -46,6 +48,31 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     private String prevUuid;
     private String status;
 
+    // Constructors for various data types
+    public Pcchr(Person user, String data) {
+        this.user = user;
+        this.charData = data;
+        setTime();
+    }
+
+    public Pcchr(Person user, double data) {
+        this.user = user;
+        this.numData = data;
+        setTime();
+    }
+
+    public Pcchr(Person user, boolean data) {
+        this.user = user;
+        this.boolData = data;
+        setTime();
+    }
+
+    public Pcchr(Person user, Date data) {
+        this.user = user;
+        this.dateTimeData = data;
+        setTime();
+    }
+
     @Override
     public Integer getId() {
         return id;
@@ -56,11 +83,18 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
         this.id = id;
     }
 
-    public User getUser() {
+    //Set the Time to current
+    public void setTime() {
+        Calendar cal = Calendar.getInstance();
+        startTime = cal.getTime();
+        endTime = cal.getTime();
+    }
+
+    public Person getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Person user) {
         this.user = user;
     }
 
