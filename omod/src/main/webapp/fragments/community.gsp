@@ -1,9 +1,3 @@
-<!-- Include Custom CSS -->
-<% ui.includeCss("patientportaltoolkit", "HealthGraph.css") %>
-
-<!-- Include Custom Scripts -->
-<% ui.includeJavascript("patientportaltoolkit", "hammer.js") %>
-<% ui.includeJavascript("patientportaltoolkit", "HealthGraph.js") %>
 
 <link rel="stylesheet"
 href="${ ui.resourceLink("patientportaltoolkit", "/styles/HealthGraph.css") }" type="text/css">
