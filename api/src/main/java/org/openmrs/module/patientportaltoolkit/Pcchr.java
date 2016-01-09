@@ -36,7 +36,7 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     private String dataCode;
     private String dataNs = "SNOMED-CT";
     private String dataUnit;
-    private String dataUnitNs;
+    private String dataUnitNs = "SI";
     private String charData;
     private Double numData;
     private Boolean boolData;

@@ -10,9 +10,9 @@
   -->
     <changeSet author="beapen" id="20160105-1">
         <comment>Create the HL10 Profiler Table.
-            http://nuchange.ca/2015/10/hl10-what-is-it.html
+
         </comment>
-        <createTable tableName="hl10Profiler">
+        <createTable tableName="hl10_profiler">
             <column autoIncrement="true" name="id" type="int">
                 <constraints primaryKey="true" nullable="false" />
             </column>
@@ -23,14 +23,12 @@
             <column name="profilerUuid" type="char(38)" />
             <column name="startTime" type="datetime" />
             <column name="endTime" type="datetime" />
-            <column defaultValue="C" name="dataType" type="ENUM('C', 'N', 'B', 'D')">
+            <column defaultValue="C" name="dataType" type="char(1)">
                 <constraints nullable="false"/>
             </column>
             <column name="dataName" type="varchar(255)" />
             <column name="dataCode" type="varchar(40)" />
-            <column defaultValue="ICD10" name="dataNs" type="varchar(40)">
-                <constraints nullable="false"/>
-            </column>
+            <column defaultValue="SNOMED-CT" name="dataNs" type="varchar(40)" />
             <column defaultValue="default" name="dataUnit" type="varchar(255)" />
             <column defaultValue="SI" name="dataUnitNs" type="varchar(255)">
                 <constraints nullable="false"/>
@@ -41,9 +39,7 @@
             <column name="dateTimeData" type="datetime" />
             <column name="segmentName" type="varchar(255)" />
             <column name="segmentCode" type="varchar(40)" />
-            <column defaultValue="ICD10" name="segmentNs" type="varchar(40)">
-                <constraints nullable="false"/>
-            </column>
+            <column defaultValue="SNOMED-CT" name="segmentNs" type="varchar(40)" />
             <column defaultValue="0" name="index" type="int" />
             <column name="prevUuid" type="char(38)" />
             <column defaultValue="default" name="status" type="varchar(255)" />
