@@ -1,8 +1,12 @@
 # openmrs-module-patientportaltoolkit-pcchr
 
-> ## Work in progress. 
+> ## Work in progress.... 
 
-[![Build Status](https://travis-ci.org/E-Health/openmrs-module-patientportaltoolkit-pcchr.svg)](https://travis-ci.org/E-Health/openmrs-module-patientportaltoolkit-pcchr)
+master: [![Build Status](https://travis-ci.org/E-Health/openmrs-module-patientportaltoolkit-pcchr.svg?branch=master)](https://travis-ci.org/E-Health/openmrs-module-patientportaltoolkit-pcchr)
+
+develop: [![Build Status](https://travis-ci.org/E-Health/openmrs-module-patientportaltoolkit-pcchr.svg?branch=develop)](https://travis-ci.org/E-Health/openmrs-module-patientportaltoolkit-pcchr)
+
+
 
 #### If you are looking for a completed openMRS 2.x module, please [try skinhelpdesk!](https://github.com/dermatologist/openmrs-module-skinhelpdesk)
 
