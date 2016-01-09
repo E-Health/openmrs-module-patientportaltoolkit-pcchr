@@ -3,7 +3,7 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="org.openmrs.module.patientportaltoolkit">
 
-    <class table="hl10Profiler" name="Pcchr">
+    <class table="hl10_profiler" name="Pcchr">
         <id name="id" type="int" column="entry_id"  unsaved-value="0">
             <generator class="native" />
         </id>
@@ -18,8 +18,6 @@
                   length="38" />
         <property name="endTime" type="java.util.Date" column="endTime"
                   length="38" />
-        <property name="dataType" type="org.openmrs.module.patientportaltoolkit.Pcchr.DataType" column="dataType"
-                  length="1"/>
         <property name="dataType" column="dataType">
             <type name="org.hibernate.type.EnumType">
                 <param name="enumClass">org.openmrs.patientportaltoolkit.Pcchr.DataType</param>
