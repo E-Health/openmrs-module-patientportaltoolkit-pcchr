@@ -14,4 +14,5 @@
     <div>
         <button type="button" class="btn btn-success" id="FormSave">Save</button>
     </div>
+<h2>${ patient.id }</h2>
 </div>
