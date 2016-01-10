@@ -12,7 +12,7 @@ package org.openmrs.module.patientportaltoolkit.api.db;
 import org.springframework.stereotype.Repository;
 import org.openmrs.module.patientportaltoolkit.Pcchr;
 import org.openmrs.module.patientportaltoolkit.api.PcchrService;
-import org.openmrs.Person;
+import org.openmrs.Patient;
 
 import java.util.List;
 
@@ -22,9 +22,9 @@ import java.util.List;
 @Repository
 public interface PcchrDAO {
     /**
-     * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getAllPcchrs(org.openmrs.Person)
+     * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getAllPcchrs(org.openmrs.Patient)
      */
-    List<Pcchr> getAllPcchrs(Person user);
+    List<Pcchr> getAllPcchrs(Patient user);
     /**
      * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getPcchr(java.lang.Integer)
      */

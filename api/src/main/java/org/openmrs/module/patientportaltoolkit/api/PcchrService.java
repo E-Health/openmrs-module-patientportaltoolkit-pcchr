@@ -11,7 +11,7 @@
 package org.openmrs.module.patientportaltoolkit.api;
 
         import org.openmrs.Patient;
-        import org.openmrs.Person;
+        import org.openmrs.Patient;
         import org.openmrs.api.OpenmrsService;
         import org.openmrs.module.patientportaltoolkit.Pcchr;
         import org.springframework.transaction.annotation.Transactional;
@@ -34,11 +34,11 @@ public interface PcchrService extends OpenmrsService {
     /**
      * Gets a list of pcchr.
      *
-     * @param user from org.openmrs.Person
+     * @param user from org.openmrs.Patient
      * @return the pcchr list.
      */
     @Transactional(readOnly = true)
-    List<Pcchr> getAllPcchrs(Person user);
+    List<Pcchr> getAllPcchrs(Patient user);
     /**
      * Gets a pcchr for a given id.
      *

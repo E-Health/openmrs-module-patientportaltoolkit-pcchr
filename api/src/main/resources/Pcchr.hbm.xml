@@ -10,7 +10,7 @@
         <discriminator column="id" insert="false" />
         <property name="uuid" type="java.lang.String" column="uuid"
             length="38" unique="true" />
-        <many-to-one name="patient" column="patientId" class="org.openmrs.User"/>
+        <many-to-one name="patient" column="patientId" class="org.openmrs.Patient"/>
         <property name="patientUuid" type="java.lang.String" column="patientUuid" length="38" />
         <property name="profilerId" type="int" column="profilerId" />
         <property name="profilerUuid" type="java.lang.String" column="profilerUuid" length="38" />

@@ -11,7 +11,7 @@ package org.openmrs.module.patientportaltoolkit;
 
 import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.BaseOpenmrsObject;
-import org.openmrs.Person;
+import org.openmrs.Patient;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -26,7 +26,7 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
-    private Person user;
+    private Patient user;
     private int profilerId;
     private String profilerUuid;
     private Date startTime;
@@ -49,25 +49,25 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     private String status;
 
     // Constructors for various data types
-    public Pcchr(Person user, String data) {
+    public Pcchr(Patient user, String data) {
         this.user = user;
         this.charData = data;
         setTime();
     }
 
-    public Pcchr(Person user, double data) {
+    public Pcchr(Patient user, double data) {
         this.user = user;
         this.numData = data;
         setTime();
     }
 
-    public Pcchr(Person user, boolean data) {
+    public Pcchr(Patient user, boolean data) {
         this.user = user;
         this.boolData = data;
         setTime();
     }
 
-    public Pcchr(Person user, Date data) {
+    public Pcchr(Patient user, Date data) {
         this.user = user;
         this.dateTimeData = data;
         setTime();
@@ -90,11 +90,11 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
         endTime = cal.getTime();
     }
 
-    public Person getUser() {
+    public Patient getUser() {
         return user;
     }
 
-    public void setUser(Person user) {
+    public void setUser(Patient user) {
         this.user = user;
     }
 

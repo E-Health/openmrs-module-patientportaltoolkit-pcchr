@@ -10,7 +10,7 @@
  */
 package org.openmrs.module.patientportaltoolkit.api.impl;
 
-import org.openmrs.Person;
+import org.openmrs.Patient;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -40,10 +40,10 @@ public class PcchrServiceImpl extends BaseOpenmrsService implements PcchrService
         return dao;
     }
     /**
-     * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getAllPcchrs(org.openmrs.Person)
+     * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getAllPcchrs(org.openmrs.Patient)
      */
     @Override
-    public List<Pcchr> getAllPcchrs(Person user) {
+    public List<Pcchr> getAllPcchrs(Patient user) {
         return dao.getAllPcchrs(user);
     }
     /**
