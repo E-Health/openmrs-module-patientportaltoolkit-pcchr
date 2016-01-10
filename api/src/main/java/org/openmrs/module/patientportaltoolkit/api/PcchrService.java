@@ -34,15 +34,15 @@ public interface PcchrService extends OpenmrsService {
     /**
      * Gets a list of pcchr.
      *
-     * @param user from org.openmrs.Patient
+     * @param patient from org.openmrs.Patient
      * @return the pcchr list.
      */
     @Transactional(readOnly = true)
-    List<Pcchr> getAllPcchrs(Patient user);
+    List<Pcchr> getAllPcchrs(Patient patient);
     /**
      * Gets a pcchr for a given id.
      *
-     * @param id the pcchr id
+     * @param pcchrId the pcchr id
      * @return the pcchr with the given id
      */
     @Transactional(readOnly = true)

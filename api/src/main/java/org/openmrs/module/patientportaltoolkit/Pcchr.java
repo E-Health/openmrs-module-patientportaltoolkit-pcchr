@@ -26,8 +26,9 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
-    private Patient user;
-    private int profilerId;
+    private Patient patient;
+    private String patientUuid;
+    private String profilerId;
     private String profilerUuid;
     private Date startTime;
     private Date endTime;
@@ -49,26 +50,26 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     private String status;
 
     // Constructors for various data types
-    public Pcchr(Patient user, String data) {
-        this.user = user;
+    public Pcchr(Patient patient, String data) {
+        this.patient = patient;
         this.charData = data;
         setTime();
     }
 
-    public Pcchr(Patient user, double data) {
-        this.user = user;
+    public Pcchr(Patient patient, double data) {
+        this.patient = patient;
         this.numData = data;
         setTime();
     }
 
-    public Pcchr(Patient user, boolean data) {
-        this.user = user;
+    public Pcchr(Patient patient, boolean data) {
+        this.patient = patient;
         this.boolData = data;
         setTime();
     }
 
-    public Pcchr(Patient user, Date data) {
-        this.user = user;
+    public Pcchr(Patient patient, Date data) {
+        this.patient = patient;
         this.dateTimeData = data;
         setTime();
     }
@@ -90,19 +91,27 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
         endTime = cal.getTime();
     }
 
-    public Patient getUser() {
-        return user;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setUser(Patient user) {
-        this.user = user;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
-    public int getProfilerId() {
+    public String getPatientUuid() {
+        return patientUuid;
+    }
+
+    public void setPatientUuid(String patientUuid) {
+        this.patientUuid = patientUuid;
+    }
+
+    public String getProfilerId() {
         return profilerId;
     }
 
-    public void setProfilerId(int profilerId) {
+    public void setProfilerId(String profilerId) {
         this.profilerId = profilerId;
     }
 

@@ -43,8 +43,8 @@ public class PcchrServiceImpl extends BaseOpenmrsService implements PcchrService
      * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getAllPcchrs(org.openmrs.Patient)
      */
     @Override
-    public List<Pcchr> getAllPcchrs(Patient user) {
-        return dao.getAllPcchrs(user);
+    public List<Pcchr> getAllPcchrs(Patient patient) {
+        return dao.getAllPcchrs(patient);
     }
     /**
      * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getPcchr(java.lang.Integer)
