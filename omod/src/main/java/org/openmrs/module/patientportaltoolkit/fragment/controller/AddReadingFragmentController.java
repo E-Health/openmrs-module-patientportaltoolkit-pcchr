@@ -6,6 +6,7 @@ import org.openmrs.api.PatientService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.patientportaltoolkit.Pcchr;
 import org.openmrs.module.patientportaltoolkit.api.PcchrService;
+import org.openmrs.ui.framework.SimpleObject;
 import org.openmrs.ui.framework.page.PageModel;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -29,15 +30,15 @@ public class AddReadingFragmentController {
 
         /**
      *
-     * @param identifier PatientId
-     * @param imagemap as String
+     * @param patientId PatientId
+     * @param patientUuid as String
      * @return Object with Message: Added
      * @should return object with the message added
      */
 
     public Object saveHl10(@RequestParam(value = "patientId", required=true) int patientId,
                            @RequestParam(value = "patientUuid", required=false) String patientUuid,
-                           @RequestParam(value = "profilerId", required=false) int profilerId,
+                           @RequestParam(value = "profilerId", required=false) String profilerId,
                            @RequestParam(value = "profilerUuid", required=false) String profilerUuid,
                            @RequestParam(value = "startTime", required=false) Date startTime,
                            @RequestParam(value = "endTime", required=false) Date endTime,
@@ -45,6 +46,8 @@ public class AddReadingFragmentController {
                            @RequestParam(value = "dataName", required=false) String dataName,
                            @RequestParam(value = "dataCode", required=false) String dataCode,
                            @RequestParam(value = "dataNs", required=false) String dataNs,
+                           @RequestParam(value = "dataUnit", required=false) String dataUnit,
+                           @RequestParam(value = "dataUnitNs", required=false) String dataUnitNs,
                            @RequestParam(value = "charData", required=false) String charData,
                            @RequestParam(value = "numData", required=false) Double numData,
                            @RequestParam(value = "boolData", required=false) Boolean boolData,
@@ -57,9 +60,11 @@ public class AddReadingFragmentController {
                            @RequestParam(value = "status", required=false) String status) {
 
        if (startTime == null)
-           Calendar.getInstance().getTime();
+           startTime = Calendar.getInstance().getTime();
        if (endTime == null)
-           Calendar.getInstance().getTime();
+           endTime = Calendar.getInstance().getTime();
+       if(dataType == null)
+           dataType = Pcchr.DataType.C;
 
         PcchrService pcchrService = Context.getService(PcchrService.class);
         PatientService patientService = Context.getPatientService();
@@ -67,46 +72,54 @@ public class AddReadingFragmentController {
         Pcchr pcchr = new Pcchr();
         String message;
         if(patient != null) {
-            pcchr.setUser(patient);
-            pcchr.setU
+            pcchr.setPatient(patient);
+            if(patientUuid != null)
+                pcchr.setPatientUuid(patientUuid);
+            if(profilerId != null)
+                pcchr.setProfilerId(profilerId);
+            if(profilerUuid != null)
+                pcchr.setProfilerUuid(profilerUuid);
+            pcchr.setStartTime(startTime);
+            pcchr.setEndTime(endTime);
+            pcchr.setDataType(dataType);
+            if(dataName != null)
+                pcchr.setDataName(dataName);
+            if(dataCode != null)
+                pcchr.setDataCode(dataCode);
+            if(dataNs != null)
+                pcchr.setDataNs(dataNs);
+            if(dataUnit != null)
+                pcchr.setDataUnit(dataUnit);
+            if(dataUnitNs != null)
+                pcchr.setDataUnitNs(dataUnitNs);
+            if(charData != null && dataType == Pcchr.DataType.C)
+                pcchr.setCharData(charData);
+            if(dataType == Pcchr.DataType.N)
+                pcchr.setNumData(numData);
+            if(dataType == Pcchr.DataType.B)
+                pcchr.setBoolData(boolData);
+            if(dateTimeData != null && dataType == Pcchr.DataType.D)
+                pcchr.setDateTimeData(dateTimeData);
+            if(segmentName != null)
+                pcchr.setSegmentName(segmentName);
+            if(segmentCode != null)
+                pcchr.setSegmentCode(segmentCode);
+            if(segmentNs != null)
+                pcchr.setSegmentNs(segmentNs);
+            if(index > 0)
+                pcchr.setIndex(index);
+            if(prevUuid != null)
+                pcchr.setPrevUuid(prevUuid);
+            if(status != null)
+                pcchr.setStatus(status);
+            pcchrService.savePcchr(pcchr);
             message = "Added";
         }else{
             message = "Error";
         }
 
         return SimpleObject.create("message", message);
-        /*
 
-        X2connectService service = Context.getService(X2connectService.class);
-        PatientService patientService = Context.getPatientService();
-        Patient patient = patientService.getPatient(identifier);
-        X2connect x2connect;
-        String message;
-        if(patient != null) {
-            x2connect = service.getX2connect(patient);
-            if(x2connect != null) {
-                x2connect.setBackgroundInfo(background);
-                x2connect.setFirstName(patient.getGivenName());
-                x2connect.setLastName(patient.getFamilyName());
-                x2connect.setAddress(patient.getAddresses().toString());
-                service.saveX2connect(x2connect);
-            }else{
-                x2connect = new X2connect();
-                x2connect.setPatient(patient);
-                x2connect.setBackgroundInfo(background);
-                x2connect.setFirstName(patient.getGivenName());
-                x2connect.setLastName(patient.getFamilyName());
-                x2connect.setAddress(patient.getAddresses().toString());
-                service.saveX2connect(x2connect);
-            }
-            message = "Added";
-        }else{
-            message = "Error";
-        }
-
-        return SimpleObject.create("message", message);
-    }
-        */
     }
 
 
