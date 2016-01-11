@@ -50,6 +50,10 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     private String status;
 
     // Constructors for various data types
+    public Pcchr(Patient patient) {
+        this.patient = patient;
+        setTime();
+    }
     public Pcchr(Patient patient, String data) {
         this.patient = patient;
         this.charData = data;

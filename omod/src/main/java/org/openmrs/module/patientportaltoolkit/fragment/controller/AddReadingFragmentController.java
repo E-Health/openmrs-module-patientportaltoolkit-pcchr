@@ -69,10 +69,9 @@ public class AddReadingFragmentController {
         PcchrService pcchrService = Context.getService(PcchrService.class);
         PatientService patientService = Context.getPatientService();
         Patient patient = patientService.getPatient(patientId);
-        Pcchr pcchr = new Pcchr();
+        Pcchr pcchr = new Pcchr(patient);
         String message;
         if(patient != null) {
-            pcchr.setPatient(patient);
             if(patientUuid != null)
                 pcchr.setPatientUuid(patientUuid);
             if(profilerId != null)
