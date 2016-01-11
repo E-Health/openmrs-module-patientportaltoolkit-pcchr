@@ -11,7 +11,7 @@ package org.openmrs.module.patientportaltoolkit;
 
 import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.BaseOpenmrsObject;
-import org.openmrs.Person;
+import org.openmrs.Patient;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -26,8 +26,9 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
-    private Person user;
-    private int profilerId;
+    private Patient patient;
+    private String patientUuid;
+    private String profilerId;
     private String profilerUuid;
     private Date startTime;
     private Date endTime;
@@ -49,26 +50,30 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     private String status;
 
     // Constructors for various data types
-    public Pcchr(Person user, String data) {
-        this.user = user;
+    public Pcchr(Patient patient) {
+        this.patient = patient;
+        setTime();
+    }
+    public Pcchr(Patient patient, String data) {
+        this.patient = patient;
         this.charData = data;
         setTime();
     }
 
-    public Pcchr(Person user, double data) {
-        this.user = user;
+    public Pcchr(Patient patient, double data) {
+        this.patient = patient;
         this.numData = data;
         setTime();
     }
 
-    public Pcchr(Person user, boolean data) {
-        this.user = user;
+    public Pcchr(Patient patient, boolean data) {
+        this.patient = patient;
         this.boolData = data;
         setTime();
     }
 
-    public Pcchr(Person user, Date data) {
-        this.user = user;
+    public Pcchr(Patient patient, Date data) {
+        this.patient = patient;
         this.dateTimeData = data;
         setTime();
     }
@@ -90,19 +95,27 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
         endTime = cal.getTime();
     }
 
-    public Person getUser() {
-        return user;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setUser(Person user) {
-        this.user = user;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
-    public int getProfilerId() {
+    public String getPatientUuid() {
+        return patientUuid;
+    }
+
+    public void setPatientUuid(String patientUuid) {
+        this.patientUuid = patientUuid;
+    }
+
+    public String getProfilerId() {
         return profilerId;
     }
 
-    public void setProfilerId(int profilerId) {
+    public void setProfilerId(String profilerId) {
         this.profilerId = profilerId;
     }
 

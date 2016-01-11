@@ -18,7 +18,7 @@ ${ ui.includeFragment("patientportaltoolkit", "patientPortalNav") }
 
     <div class="tab-content">
         <div id="addReading" class="tab-pane fade in active">
-            ${ ui.includeFragment("patientportaltoolkit", "treatments") }
+            ${ ui.includeFragment("patientportaltoolkit", "addReading") }
         </div>
         <div id="seeReading" class="tab-pane fade">
             ${ ui.includeFragment("patientportaltoolkit", "sideEffects") }
@@ -27,7 +27,7 @@ ${ ui.includeFragment("patientportaltoolkit", "patientPortalNav") }
             ${ ui.includeFragment("patientportaltoolkit", "appointments") }
         </div>
         <div id="hGraph" class="tab-pane fade">
-            ${ ui.includeFragment("patientportaltoolkit", "community") }
+            ${ ui.includeFragment("patientportaltoolkit", "hGraph") }
         </div>
         <div id="resources" class="tab-pane fade">
             ${ ui.includeFragment("patientportaltoolkit", "symptomManagement") }
