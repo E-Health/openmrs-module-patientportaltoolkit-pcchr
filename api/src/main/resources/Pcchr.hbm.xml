@@ -4,7 +4,7 @@
 <hibernate-mapping package="org.openmrs.module.patientportaltoolkit">
 
     <class table="hl10_profiler" name="Pcchr">
-        <id name="id" type="int" column="entry_id"  unsaved-value="0">
+        <id name="id" type="int" column="id"  unsaved-value="0">
             <generator class="native" />
         </id>
         <discriminator column="id" insert="false" />

@@ -11,6 +11,7 @@ ${ ui.includeFragment("patientportaltoolkit", "patientPortalNav") }
     <ul class="nav nav-pills">
     <li class="active"><a data-toggle="tab" href="#addReading">Add Readings</a></li>
     <li><a data-toggle="tab" href="#seeReading">See Readings</a></li>
+    <li><a data-toggle="tab" href="#seeGraphs">See Graphs</a></li>
     <li><a data-toggle="tab" href="#alerts">Alerts</a></li>
     <li><a data-toggle="tab" href="#hGraph">hGraph</a></li>
     <li><a data-toggle="tab" href="#resources">Resources</a></li>
@@ -21,7 +22,10 @@ ${ ui.includeFragment("patientportaltoolkit", "patientPortalNav") }
             ${ ui.includeFragment("patientportaltoolkit", "addReading") }
         </div>
         <div id="seeReading" class="tab-pane fade">
-            ${ ui.includeFragment("patientportaltoolkit", "sideEffects") }
+            ${ ui.includeFragment("patientportaltoolkit", "seeReading") }
+        </div>
+        <div id="seeGraphs" class="tab-pane fade">
+            ${ ui.includeFragment("patientportaltoolkit", "seeReading") }
         </div>
         <div id="alerts" class="tab-pane fade">
             ${ ui.includeFragment("patientportaltoolkit", "appointments") }
