@@ -20,7 +20,10 @@ def props = config.properties ?: ["id", "dataName", "dataCode", "dataType", "cha
             <% props.each { prop -> %>
                 <td><%= ui.format(enc."${prop}") %></td>
                 <% } %>
-            </tr>
+                <td>
+                    <button type="button" class="btn btn-alert" value="${ enc.id }">Delete</button>
+                </td>
+                </tr>
                 <% } %>
             <% } else { %>
             <tr>
