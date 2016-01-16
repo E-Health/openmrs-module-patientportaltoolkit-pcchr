@@ -14,7 +14,7 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.openmrs.Patient;
-import org.openmrs.Person;
+import org.openmrs.Patient;
 import org.openmrs.module.patientportaltoolkit.Pcchr;
 import org.openmrs.module.patientportaltoolkit.api.db.PcchrDAO;
 
@@ -41,11 +41,11 @@ public class HibernatePcchrDAO implements PcchrDAO {
 		return sessionFactory;
 	}
 	/**
-	 * @see org.openmrs.module.patientportaltoolkit.api.db.PcchrDAO#getAllPcchrs(org.openmrs.Person)
+	 * @see org.openmrs.module.patientportaltoolkit.api.db.PcchrDAO#getAllPcchrs(org.openmrs.Patient)
 	 */
 	@Override
-	public List<Pcchr> getAllPcchrs(Person user) {
-		return sessionFactory.getCurrentSession().createCriteria(Pcchr.class).add(Restrictions.eq("user", user)).list();
+	public List<Pcchr> getAllPcchrs(Patient patient) {
+		return sessionFactory.getCurrentSession().createCriteria(Pcchr.class).add(Restrictions.eq("patient", patient)).list();
 	}
 	/**
 	 * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getPcchr(java.lang.Integer)

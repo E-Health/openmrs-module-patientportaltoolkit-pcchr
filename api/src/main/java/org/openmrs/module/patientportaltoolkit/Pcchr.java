@@ -11,7 +11,7 @@ package org.openmrs.module.patientportaltoolkit;
 
 import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.BaseOpenmrsObject;
-import org.openmrs.Person;
+import org.openmrs.Patient;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -26,12 +26,13 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
-    private Person user;
-    private int profilerId;
+    private Patient patient;
+    private String patientUuid;
+    private String profilerId;
     private String profilerUuid;
     private Date startTime;
     private Date endTime;
-    private DataType dataType;
+    private String dataType;
     private String dataName;
     private String dataCode;
     private String dataNs = "SNOMED-CT";
@@ -44,34 +45,41 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     private String segmentName;
     private String segmentCode;
     private String segmentNs;
-    private int index = 0;
+    private int segmentIndex = 0;
     private String prevUuid;
-    private String status;
+    private String dataStatus;
 
     // Constructors for various data types
-    public Pcchr(Person user, String data) {
-        this.user = user;
+
+    /*
+    public Pcchr(Patient patient) {
+        this.patient = patient;
+        setTime();
+    }
+    public Pcchr(Patient patient, String data) {
+        this.patient = patient;
         this.charData = data;
         setTime();
     }
 
-    public Pcchr(Person user, double data) {
-        this.user = user;
+    public Pcchr(Patient patient, double data) {
+        this.patient = patient;
         this.numData = data;
         setTime();
     }
 
-    public Pcchr(Person user, boolean data) {
-        this.user = user;
+    public Pcchr(Patient patient, boolean data) {
+        this.patient = patient;
         this.boolData = data;
         setTime();
     }
 
-    public Pcchr(Person user, Date data) {
-        this.user = user;
+    public Pcchr(Patient patient, Date data) {
+        this.patient = patient;
         this.dateTimeData = data;
         setTime();
     }
+    */
 
     @Override
     public Integer getId() {
@@ -90,19 +98,28 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
         endTime = cal.getTime();
     }
 
-    public Person getUser() {
-        return user;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setUser(Person user) {
-        this.user = user;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+        setTime();
     }
 
-    public int getProfilerId() {
+    public String getPatientUuid() {
+        return patientUuid;
+    }
+
+    public void setPatientUuid(String patientUuid) {
+        this.patientUuid = patientUuid;
+    }
+
+    public String getProfilerId() {
         return profilerId;
     }
 
-    public void setProfilerId(int profilerId) {
+    public void setProfilerId(String profilerId) {
         this.profilerId = profilerId;
     }
 
@@ -130,11 +147,11 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
         this.endTime = endTime;
     }
 
-    public DataType getDataType() {
+    public String getDataType() {
         return dataType;
     }
 
-    public void setDataType(DataType dataType) {
+    public void setDataType(String dataType) {
         this.dataType = dataType;
     }
 
@@ -234,12 +251,20 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
         this.segmentNs = segmentNs;
     }
 
-    public int getIndex() {
-        return index;
+    public int getSegmentIndex() {
+        return segmentIndex;
     }
 
-    public void setIndex(int index) {
-        this.index = index;
+    public void setSegmentIndex(int segmentIndex) {
+        this.segmentIndex = segmentIndex;
+    }
+
+    public String getDataStatus() {
+        return dataStatus;
+    }
+
+    public void setDataStatus(String dataStatus) {
+        this.dataStatus = dataStatus;
     }
 
     public String getPrevUuid() {
@@ -250,15 +275,6 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
         this.prevUuid = prevUuid;
     }
 
-    public String getStatus() {
-        return status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
-    public enum DataType {
-        C, N, B, D
-    }
 }
