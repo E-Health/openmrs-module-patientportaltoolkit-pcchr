@@ -46,6 +46,7 @@ public class HibernatePcchrDAO implements PcchrDAO {
 	@Override
 	public List<Pcchr> getAllPcchrs(Patient patient) {
 		return sessionFactory.getCurrentSession().createCriteria(Pcchr.class).add(Restrictions.eq("patient", patient)).list();
+		//return sessionFactory.getCurrentSession().createCriteria(Pcchr.class).list();
 	}
 	/**
 	 * @see org.openmrs.module.patientportaltoolkit.api.PcchrService#getPcchr(java.lang.Integer)
