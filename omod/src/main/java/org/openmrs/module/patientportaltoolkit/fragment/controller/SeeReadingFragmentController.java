@@ -86,5 +86,20 @@ public class SeeReadingFragmentController {
         return SimpleObject.fromCollection(pcchrs, ui, properties);
     }
 
+    /**
+     *
+     * @param hl10Id
+     * @return Object with Message: Added
+     * @should return object with the message added
+     */
 
+    public Object purgeHl10(@RequestParam(value = "id", required=true) int hl10Id) {
+
+        PcchrService service = Context.getService(PcchrService.class);
+        Pcchr pcchr = service.getPcchr(hl10Id);
+        service.purgePcchr(pcchr);
+        String message = "Added";
+        return SimpleObject.create("message", message);
+
+    }
 }
