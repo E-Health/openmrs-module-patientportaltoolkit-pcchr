@@ -11,7 +11,6 @@
 package org.openmrs.module.patientportaltoolkit.api;
 
         import org.openmrs.Patient;
-        import org.openmrs.Patient;
         import org.openmrs.api.OpenmrsService;
         import org.openmrs.module.patientportaltoolkit.Pcchr;
         import org.springframework.transaction.annotation.Transactional;

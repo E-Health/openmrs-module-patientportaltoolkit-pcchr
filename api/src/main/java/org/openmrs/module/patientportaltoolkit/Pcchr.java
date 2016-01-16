@@ -32,7 +32,7 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     private String profilerUuid;
     private Date startTime;
     private Date endTime;
-    private DataType dataType;
+    private String dataType;
     private String dataName;
     private String dataCode;
     private String dataNs = "SNOMED-CT";
@@ -45,11 +45,13 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     private String segmentName;
     private String segmentCode;
     private String segmentNs;
-    private int index = 0;
+    private int segmentIndex = 0;
     private String prevUuid;
-    private String status;
+    private String dataStatus;
 
     // Constructors for various data types
+
+    /*
     public Pcchr(Patient patient) {
         this.patient = patient;
         setTime();
@@ -77,6 +79,7 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
         this.dateTimeData = data;
         setTime();
     }
+    */
 
     @Override
     public Integer getId() {
@@ -101,6 +104,7 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+        setTime();
     }
 
     public String getPatientUuid() {
@@ -143,11 +147,11 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
         this.endTime = endTime;
     }
 
-    public DataType getDataType() {
+    public String getDataType() {
         return dataType;
     }
 
-    public void setDataType(DataType dataType) {
+    public void setDataType(String dataType) {
         this.dataType = dataType;
     }
 
@@ -247,12 +251,20 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
         this.segmentNs = segmentNs;
     }
 
-    public int getIndex() {
-        return index;
+    public int getSegmentIndex() {
+        return segmentIndex;
     }
 
-    public void setIndex(int index) {
-        this.index = index;
+    public void setSegmentIndex(int segmentIndex) {
+        this.segmentIndex = segmentIndex;
+    }
+
+    public String getDataStatus() {
+        return dataStatus;
+    }
+
+    public void setDataStatus(String dataStatus) {
+        this.dataStatus = dataStatus;
     }
 
     public String getPrevUuid() {
@@ -263,15 +275,6 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
         this.prevUuid = prevUuid;
     }
 
-    public String getStatus() {
-        return status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
-    public enum DataType {
-        C, N, B, D
-    }
 }

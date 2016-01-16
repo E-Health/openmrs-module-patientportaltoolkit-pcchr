@@ -1,13 +1,16 @@
 package org.openmrs.module.patientportaltoolkit.fragment.controller;
 
 
+import org.apache.commons.beanutils.PropertyUtils;
 import org.openmrs.Patient;
 import org.openmrs.api.PatientService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.patientportaltoolkit.Pcchr;
 import org.openmrs.module.patientportaltoolkit.api.PcchrService;
 import org.openmrs.ui.framework.SimpleObject;
-import org.openmrs.ui.framework.page.PageModel;
+import org.openmrs.ui.framework.annotation.SpringBean;
+import org.openmrs.ui.framework.fragment.FragmentConfiguration;
+import org.openmrs.ui.framework.fragment.FragmentModel;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Calendar;
@@ -18,7 +21,8 @@ import java.util.Date;
  */
 public class AddReadingFragmentController {
 
-    public void controller(PageModel model) {
+
+    public void controller(FragmentModel model) {
         Patient patient;
         patient= Context.getPatientService().getPatientByUuid(Context.getAuthenticatedUser().getPerson().getUuid());
         if (patient == null) {
@@ -28,7 +32,8 @@ public class AddReadingFragmentController {
 
     }
 
-        /**
+
+    /**
      *
      * @param patientId PatientId
      * @param patientUuid as String
@@ -42,7 +47,7 @@ public class AddReadingFragmentController {
                            @RequestParam(value = "profilerUuid", required=false) String profilerUuid,
                            @RequestParam(value = "startTime", required=false) Date startTime,
                            @RequestParam(value = "endTime", required=false) Date endTime,
-                           @RequestParam(value = "dataType", required=false) Pcchr.DataType dataType,
+                           @RequestParam(value = "dataType", required=false) String dataType,
                            @RequestParam(value = "dataName", required=false) String dataName,
                            @RequestParam(value = "dataCode", required=false) String dataCode,
                            @RequestParam(value = "dataNs", required=false) String dataNs,
@@ -55,23 +60,27 @@ public class AddReadingFragmentController {
                            @RequestParam(value = "segmentName", required=false) String segmentName,
                            @RequestParam(value = "segmentCode", required=false) String segmentCode,
                            @RequestParam(value = "segmentNs", required=false) String segmentNs,
-                           @RequestParam(value = "index", required=false) int index,
+                           @RequestParam(value = "segmentIndex", required=false) int segmentIndex,
                            @RequestParam(value = "prevUuid", required=false) String prevUuid,
-                           @RequestParam(value = "status", required=false) String status) {
+                           @RequestParam(value = "dataStatus", required=false) String dataStatus) {
 
-       if (startTime == null)
-           startTime = Calendar.getInstance().getTime();
-       if (endTime == null)
-           endTime = Calendar.getInstance().getTime();
-       if(dataType == null)
-           dataType = Pcchr.DataType.C;
-
-        PcchrService pcchrService = Context.getService(PcchrService.class);
+        PcchrService service = Context.getService(PcchrService.class);
         PatientService patientService = Context.getPatientService();
         Patient patient = patientService.getPatient(patientId);
-        Pcchr pcchr = new Pcchr(patient);
+        Pcchr pcchr = new Pcchr();
         String message;
+
+        if (startTime == null)
+           startTime = Calendar.getInstance().getTime();
+        if (endTime == null)
+           endTime = Calendar.getInstance().getTime();
+        if(dataType == null)
+           dataType = "C";
+       
+
+
         if(patient != null) {
+            pcchr.setPatient(patient);
             if(patientUuid != null)
                 pcchr.setPatientUuid(patientUuid);
             if(profilerId != null)
@@ -91,13 +100,13 @@ public class AddReadingFragmentController {
                 pcchr.setDataUnit(dataUnit);
             if(dataUnitNs != null)
                 pcchr.setDataUnitNs(dataUnitNs);
-            if(charData != null && dataType == Pcchr.DataType.C)
+            if(charData != null && dataType.equalsIgnoreCase("C"))
                 pcchr.setCharData(charData);
-            if(dataType == Pcchr.DataType.N)
+            if(dataType.equalsIgnoreCase("N"))
                 pcchr.setNumData(numData);
-            if(dataType == Pcchr.DataType.B)
+            if(dataType.equalsIgnoreCase("B"))
                 pcchr.setBoolData(boolData);
-            if(dateTimeData != null && dataType == Pcchr.DataType.D)
+            if(dateTimeData != null && dataType.equalsIgnoreCase("D"))
                 pcchr.setDateTimeData(dateTimeData);
             if(segmentName != null)
                 pcchr.setSegmentName(segmentName);
@@ -105,18 +114,19 @@ public class AddReadingFragmentController {
                 pcchr.setSegmentCode(segmentCode);
             if(segmentNs != null)
                 pcchr.setSegmentNs(segmentNs);
-            if(index > 0)
-                pcchr.setIndex(index);
+            if(segmentIndex > 0)
+                pcchr.setSegmentIndex(segmentIndex);
             if(prevUuid != null)
                 pcchr.setPrevUuid(prevUuid);
-            if(status != null)
-                pcchr.setStatus(status);
-            pcchrService.savePcchr(pcchr);
+            if(dataStatus != null)
+                pcchr.setDataStatus(dataStatus);
+            service.savePcchr(pcchr);
             message = "Added";
         }else{
             message = "Error";
         }
-
+        
+        //String message = charData;
         return SimpleObject.create("message", message);
 
     }
