@@ -21,7 +21,7 @@ ${ ui.includeFragment("patientportaltoolkit", "patientPortalNav") }
             ${ ui.includeFragment("patientportaltoolkit", "addReading") }
         </div>
         <div id="seeReading" class="tab-pane fade">
-            ${ ui.includeFragment("patientportaltoolkit", "sideEffects") }
+            ${ ui.includeFragment("patientportaltoolkit", "seeReading") }
         </div>
         <div id="alerts" class="tab-pane fade">
             ${ ui.includeFragment("patientportaltoolkit", "appointments") }
