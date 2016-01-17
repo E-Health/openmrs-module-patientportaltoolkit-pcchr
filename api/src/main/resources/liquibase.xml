@@ -47,5 +47,58 @@
 
     </changeSet>
 
+    <changeSet author="beapen" id="20160117-3">
+        <comment>Create the Patient Portal Relation Table.
+            Created from PatientPortalRelation.hbm.xml
+        </comment>
+        <createTable tableName="patientportal_relation">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="uuid" type="char(38)" />
+            <column name="patient_id" type="char(38)" />
+            <column name="relationship_person_id" type="char(38)" />
+            <column name="creator" type="char(38)" />
+            <column name="changed_by" type="char(38)" />
+            <column name="retired_by" type="char(38)" />
+            <column name="share_start_date" type="datetime" />
+            <column name="share_activate_date" type="datetime" />
+            <column name="share_expire_date" type="datetime" />
+            <column name="date_created" type="datetime" />
+            <column name="date_changed" type="datetime" />
+            <column name="date_retired" type="datetime" />
+            <column name="retired" type="boolean" />
+            <column name="share_type" type="varchar(255)" />
+            <column name="relationship_person_name" type="varchar(255)" />
+            <column name="relationship_person_email" type="varchar(255)" />
+            <column name="relationship_type" type="varchar(255)" />
+            <column name="retire_reason" type="varchar(255)" />
 
+        </createTable>
+
+    </changeSet>
+
+        <changeSet author="beapen" id="20160117-4">
+        <comment>Create the Patient Portal Messages Table.
+            Created from Message.hbm.xml
+        </comment>
+        <createTable tableName="patientportal_messages">
+            <column autoIncrement="true" name="entry_id" type="int">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="uuid" type="char(38)" />
+            <column name="parent_entry_id" type="int" />
+
+            <column name="date_created" type="datetime" />
+            <column name="date_deleted" type="datetime" />
+            <column name="deleted" type="boolean" />
+            <column name="title" type="varchar(255)" />
+            <column name="content" type="text" />
+
+            <column name="sender" type="char(38)" />
+            <column name="receiver" type="char(38)" />
+
+        </createTable>
+
+    </changeSet>
 </databaseChangeLog>

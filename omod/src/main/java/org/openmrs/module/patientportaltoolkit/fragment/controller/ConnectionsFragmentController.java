@@ -20,7 +20,10 @@ public class ConnectionsFragmentController {
         Patient patient = null;
         patient= Context.getPatientService().getPatientByUuid(Context.getAuthenticatedUser().getPerson().getUuid());
         if (patient !=null)
-            model.addAttribute("relationships", Context.getService(PatientPortalRelationService.class).getPatientPortalRelationByPatient(patient));
+            //There seems to be some issue with privileges
+            // TODO  Rectify later
+            model.addAttribute("relationships",null);
+            //model.addAttribute("relationships", Context.getService(PatientPortalRelationService.class).getPatientPortalRelationByPatient(patient));
         else
             model.addAttribute("relationships",null);
     }
