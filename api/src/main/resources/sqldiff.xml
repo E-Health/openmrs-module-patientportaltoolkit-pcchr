@@ -147,5 +147,46 @@ CONSTRAINT `fk_phr_event_log_patient_id` FOREIGN KEY (`patient_id`) REFERENCES `
 );	
 		</sql>
 	</diff>
-
+<diff>
+		<version>1.0.4</version>
+		<author>Dieterich Lawson</author>
+		<date>April 30th, 2011</date>
+		<description>
+			Creating journal entries table
+		</description>
+		<sql>
+			CREATE TABLE IF NOT EXISTS phrjournal_entry (
+				`entry_id` int(11) NOT NULL auto_increment,
+				`uuid` char(38) NOT NULL,
+				`title` varchar(255) NOT NULL default '',
+				`content` TEXT,
+				`creator` int(11) NOT NULL default 0,
+				`date_created` datetime default NULL,
+				PRIMARY KEY (entry_id)
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8;	
+		</sql>
+	</diff>
+		<diff>
+		<version>1.0.5</version>
+		<author>Dieterich Lawson</author>
+		<date>May 26th, 2011</date>
+		<description>
+			Creating adding 'deleted' and 'dateDeleted' columns.
+		</description>
+		<sql>
+			ALTER TABLE phrjournal_entry ADD COLUMN deleted tinyint(1) DEFAULT 0, ADD COLUMN date_deleted datetime default null;	
+		</sql>
+	</diff>
+		<diff>
+		<version>1.0.6</version>
+		<author>Hui Xiao</author>
+		<date>August 12th, 2011</date>
+		<description>
+			Creating 'parent_entry_id' column.
+		</description>
+		<sql>
+			ALTER TABLE phrjournal_entry ADD COLUMN parent_entry_id int(11) default NULL;	
+			ALTER TABLE phrjournal_entry ADD CONSTRAINT `parent_entry_id_fk` FOREIGN KEY (`parent_entry_id`) REFERENCES `phrjournal_entry` (`entry_id`);
+		</sql>
+	</diff>	
 </sqldiff>
