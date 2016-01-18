@@ -25,12 +25,8 @@ public class SeeReadingFragmentController {
 
 
     public void controller(FragmentModel model, UiUtils ui) {
-        Patient patient;
-        patient= Context.getPatientService().getPatientByUuid(Context.getAuthenticatedUser().getPerson().getUuid());
-        if (patient == null) {
-            patient= Context.getPatientService().getPatient(7); //For Testing
-        }
-        //String[] properties = new String[] {"dataName", "dataCode", "dataType", "charData", "numData", "boolData", "dateTimeData"};
+        Patient patient= Context.getPatientService().getPatientByUuid(Context.getAuthenticatedUser().getPerson().getUuid());
+       //String[] properties = new String[] {"dataName", "dataCode", "dataType", "charData", "numData", "boolData", "dateTimeData"};
 
         PcchrService service = Context.getService(PcchrService.class);
 

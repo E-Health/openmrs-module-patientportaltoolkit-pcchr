@@ -27,7 +27,7 @@ public class AddReadingFragmentController {
     public void controller(FragmentModel model) {
 
         Patient patient= Context.getPatientService().getPatientByUuid(Context.getAuthenticatedUser().getPerson().getUuid());
-        if (patient == null)
+        if (patient != null)
             model.addAttribute("patient", patient);
         else
             model.addAttribute("patient", null);
