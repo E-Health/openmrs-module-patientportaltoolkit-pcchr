@@ -16,17 +16,23 @@ import java.util.List;
  */
 public class HGraphFragmentController {
 
-     public void controller(FragmentModel model, UiUtils ui) {
+     public void controller(FragmentModel model) {
         Patient patient= Context.getPatientService().getPatientByUuid(Context.getAuthenticatedUser().getPerson().getUuid());
-       //String[] properties = new String[] {"dataName", "dataCode", "dataType", "charData", "numData", "boolData", "dateTimeData"};
-
         PcchrService service = Context.getService(PcchrService.class);
-
-
-        String[] properties = new String[] {"id", "dataName", "dataCode", "dataType", "charData", "numData", "boolData", "dateTimeData"};
         List<Pcchr> pcchrs = service.getAllPcchrs(patient);
-        //model.addAttribute("patient", patient);
-        model.addAttribute("pcchrs", SimpleObject.fromCollection(pcchrs, ui, properties));
+        SimpleObject s = new SimpleObject();
+        for (Pcchr pcchr : pcchrs){
+            if(s.containsKey(pcchr.getDataName())){
+                Double this_value = pcchr.getNumData();
+                Object o = s.get(pcchr.getDataName());
+                Double old_value = (Double) o;
+                Double new_value = (this_value + old_value) / 2;
+                s.put(pcchr.getDataName(), new_value);
+            }else{
+                s.put(pcchr.getDataName(),pcchr.getNumData());
+            }
+        }
+        model.addAttribute("pcchrs", s);
     }
 
 }
