@@ -11,7 +11,7 @@ import org.openmrs.ui.framework.fragment.FragmentModel;
 /**
  * Created by Maurya on 19/08/2015.
  */
-public class SymptomManagementFragmentController {
+public class TailoredInfoFragmentController {
 
 
     protected final Log log = LogFactory.getLog(getClass());
@@ -21,7 +21,6 @@ public class SymptomManagementFragmentController {
         String url = Context.getAdministrationService().getGlobalProperty(PatientPortalToolkitConstants.GP_SYMPTOM_MANAGEMENT_URL);
         String username = Context.getAdministrationService().getGlobalProperty(PatientPortalToolkitConstants.GP_SYMPTOM_MANAGEMENT_USERNAME);
         String password = Context.getAdministrationService().getGlobalProperty(PatientPortalToolkitConstants.GP_SYMPTOM_MANAGEMENT_PASSWORD);
-
         /*
         // TODO send a real response with a helpful UI message
         if (url == null || username == null || password == null) {

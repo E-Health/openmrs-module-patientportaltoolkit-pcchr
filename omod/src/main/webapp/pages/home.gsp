@@ -25,16 +25,16 @@ ${ ui.includeFragment("patientportaltoolkit", "patientPortalNav") }
             ${ ui.includeFragment("patientportaltoolkit", "seeReading") }
         </div>
         <div id="seeGraphs" class="tab-pane fade">
-            ${ ui.includeFragment("patientportaltoolkit", "seeReading") }
+            ${ ui.includeFragment("patientportaltoolkit", "seeGraph") }
         </div>
         <div id="alerts" class="tab-pane fade">
-            ${ ui.includeFragment("patientportaltoolkit", "appointments") }
+            ${ ui.includeFragment("patientportaltoolkit", "alerts") }
         </div>
         <div id="hGraph" class="tab-pane fade">
             ${ ui.includeFragment("patientportaltoolkit", "hGraph") }
         </div>
         <div id="resources" class="tab-pane fade">
-            ${ ui.includeFragment("patientportaltoolkit", "symptomManagement") }
+            ${ ui.includeFragment("patientportaltoolkit", "tailoredInfo") }
         </div>
     </div>
 </div>

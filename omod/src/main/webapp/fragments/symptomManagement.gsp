@@ -10,7 +10,10 @@
        // jQuery("#portal").attr("src", ""+ contextPath + "module/patientportaltoolkit/portal.htm");
     });*/
 </script>
-
+<div id="bit-main">
+<h2>Tailored Health Information will appear here.</h2>
+</div>
+<!--
 <style>
 #portal {
     width: 70%;
@@ -22,3 +25,4 @@
 <div id="content" class="container">
     <iframe id="portal" src="${SymptomManagementPortalUrl}"></iframe>
 </div>
+-->
