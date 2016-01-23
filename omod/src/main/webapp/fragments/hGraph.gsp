@@ -152,3 +152,13 @@ src="${ ui.resourceLink("patientportaltoolkit", "/scripts/hammer.js") }"></scrip
 </figure>
 		</section>
 </section>
+                            <h2>${ person.gender }</h2>
+
+
+    <% if (pcchrs) { %>
+<h2>Yes: ${ pcchrs["Body Weight"] }</h2>
+            <% } %>
+
+
+                    <div id="responds"></div>
+</div>

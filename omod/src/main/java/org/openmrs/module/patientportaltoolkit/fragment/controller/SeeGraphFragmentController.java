@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * Created by Bell on 10/01/2016.
  */
-public class SeeReadingFragmentController {
+public class SeeGraphFragmentController {
 
 
     public void controller(FragmentModel model, UiUtils ui) {

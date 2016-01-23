@@ -21,12 +21,13 @@ import java.util.UUID;
 /**
  * Created by Bell on 10/01/2016.
  */
-public class AddReadingFragmentController {
+public class AlertsFragmentController {
 
 
     public void controller(FragmentModel model) {
 
         Patient patient= Context.getPatientService().getPatientByUuid(Context.getAuthenticatedUser().getPerson().getUuid());
+
         if (patient != null)
             model.addAttribute("patient", patient);
         else
