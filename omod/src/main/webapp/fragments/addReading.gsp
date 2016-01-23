@@ -1,4 +1,4 @@
-<h1> Add Readings </h1>
+<h1> Add Readings for Patient ID: ${ patient.id }</h1>
 <hr>
 <script>
 
@@ -81,17 +81,13 @@ jQuery(document).ready(function() {
     <div class="input-group">
         <input id="glucose" type="text" class="form-control" placeholder="Your Blood Glucose Reading" aria-describedby="basic-addon2">
         <span class="input-group-addon" id="basic-addon2">mg/DL</span>
+        <button type="button" class="btn btn-success pull-right" id="GlucoseSave">Save Blood Glucose</button>
     </div>
-    <div>
-        <button type="button" class="btn btn-success" id="GlucoseSave">Save Blood Glucose</button>
-    </div>
+<hr>
     <div class="input-group">
         <input id="weight" type="text" class="form-control" placeholder="Your Weight" aria-describedby="basic-addon2">
         <span class="input-group-addon" id="basic-addon3">Kg</span>
-    </div>
-    <div>
-        <button type="button" class="btn btn-success" id="WeightSave">Save Body Weight</button>
+        <button type="button" class="btn btn-success pull-right" id="WeightSave">Save Body Weight</button>
     </div>
     <div id="responds"></div>
-<h2>Patient ID: ${ patient.id }</h2>
 </div>
