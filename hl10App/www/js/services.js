@@ -9,7 +9,7 @@ angular.module('starter.services', [])
         service.Login = function (username, password, callback) {
 
             /* Dummy authentication for testing, uses $timeout to simulate api call
-             ----------------------------------------------*/
+             ----------------------------------------------
             $timeout(function () {
                 var response = { success: username === 'test' && password === 'test' };
                 if (!response.success) {
@@ -18,13 +18,13 @@ angular.module('starter.services', [])
                 callback(response);
             }, 1000);
 
-
+            */
             /* Use this for real authentication
              ----------------------------------------------*/
-            //$http.post('/api/authenticate', { username: username, password: password })
-            //    .success(function (response) {
-            //        callback(response);
-            //    });
+            $http.get("/api", { username: username, password: password })
+                .success(function (response) {
+                    callback(response);
+                });
 
         };
 

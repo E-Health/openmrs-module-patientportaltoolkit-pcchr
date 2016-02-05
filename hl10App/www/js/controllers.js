@@ -40,11 +40,11 @@ angular.module('starter.controllers', [])
         $scope.signIn = function (user) {
             $scope.dataLoading = true;
             AuthenticationService.Login(user.username, user.password, function (response) {
-                alert(user.username);
+                alert(response.sessionId);
+                alert(response.authenticated);
                 if (response.success) {
                     AuthenticationService.SetCredentials(user.username, user.password);
                     //location.path('/');
-                    alert("here");
                     $state.go('tab.dash');
                 } else {
                   alert("sorry");
