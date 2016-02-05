@@ -1,0 +1,10 @@
+{
+  "name": "hl10App",
+  "app_id": "",
+  "proxies": [
+  	{
+  		"path": "/api",
+  		"proxyUrl": "http://192.168.0.249:8080/openmrs/ws/rest/v1/session"
+  	}
+  ]
+}
