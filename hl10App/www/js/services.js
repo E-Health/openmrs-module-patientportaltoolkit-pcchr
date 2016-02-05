@@ -18,7 +18,7 @@ angular.module('starter.services', [])
                 callback(response);
             }, 1000);
 
-            */
+            */ //$http.post
             /* Use this for real authentication
              ----------------------------------------------*/
             $http.get("/api", { username: username, password: password })

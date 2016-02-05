@@ -39,15 +39,15 @@ angular.module('starter.controllers', [])
 
         $scope.signIn = function (user) {
             $scope.dataLoading = true;
+            AuthenticationService.SetCredentials(user.username, user.password);
             AuthenticationService.Login(user.username, user.password, function (response) {
-                alert(response.sessionId);
-                alert(response.authenticated);
-                if (response.success) {
-                    AuthenticationService.SetCredentials(user.username, user.password);
+                if (response.authenticated) {
+                    //AuthenticationService.SetCredentials(user.username, user.password);
                     //location.path('/');
                     $state.go('tab.dash');
                 } else {
-                  alert("sorry");
+                    alert("sorry");
+                    AuthenticationService.ClearCredentials(user.username, user.password);
                     $scope.error = response.message;
                     $scope.dataLoading = false;
                 }

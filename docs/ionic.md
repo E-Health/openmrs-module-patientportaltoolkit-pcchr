@@ -6,3 +6,8 @@
 
 ## REST Service
 [http://learn.ionicframework.com/formulas/backend-data/]
+
+## To Do
+
+- CookieStore to LocalStorage
+
