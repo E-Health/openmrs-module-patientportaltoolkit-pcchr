@@ -21,8 +21,45 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
+/*
+.controller('SignInCtrl', function($scope, $state) {
+  
+  $scope.signIn = function(user) {
+    console.log('Sign-In', user);
+    $state.go('tab.dash');
+  };
+  
+})
+*/
+.controller('SignInCtrl',
+    ['$scope', '$rootScope', '$state', 'AuthenticationService',
+    function ($scope, $rootScope, $state, AuthenticationService) {
+        // reset login status
+        AuthenticationService.ClearCredentials();
+
+        $scope.signIn = function (user) {
+            $scope.dataLoading = true;
+            AuthenticationService.Login(user.username, user.password, function (response) {
+                alert(user.username);
+                if (response.success) {
+                    AuthenticationService.SetCredentials(user.username, user.password);
+                    //location.path('/');
+                    alert("here");
+                    $state.go('tab.dash');
+                } else {
+                  alert("sorry");
+                    $scope.error = response.message;
+                    $scope.dataLoading = false;
+                }
+            });
+        };
+}])
+
+
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true
   };
 });
+
+
