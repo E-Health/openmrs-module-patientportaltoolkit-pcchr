@@ -26,6 +26,8 @@ This is a fork of https://github.com/maurya/openmrs-module-patientportaltoolkit 
 HL10 stands for Hamilton, a city in Ontario, Canada. HL10 is a conceptual framework for mHealth Behaviour Intervention Technology. [Read More..](http://nuchange.ca/2015/10/hl10-what-is-it.html)
 This module is (would be) an example backend implementation.
 
+The mobile application (Ionic) is in the hl10App folder
+
 ## What are the wider implications?
 
 This module would extend the concept of Patient-Controlled Health Record (PCHR) to **Patient-Controlled and Contributed Health Record (PCCHR)** with the simple and unique HL10 data model for Behaviour Intervention Technology. 
