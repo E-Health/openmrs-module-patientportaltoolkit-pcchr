@@ -3,8 +3,12 @@
   "app_id": "",
   "proxies": [
   	{
-  		"path": "/api",
+  		"path": "/login",
   		"proxyUrl": "http://192.168.0.249:8080/openmrs/ws/rest/v1/session"
+  	},
+  	{
+  		"path": "/profiler",
+  		"proxyUrl": "http://192.168.0.249:8080/openmrs/ws/rest/v1/pcchr/profiler"
   	}
   ]
 }
