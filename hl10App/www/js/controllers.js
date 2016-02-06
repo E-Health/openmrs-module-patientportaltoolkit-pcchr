@@ -1,6 +1,17 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngResource', 'starter.services'])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope, Post) {
+  $scope.posts = Post.query();
+
+  $scope.newPost = function(){
+    //alert("saving");
+    var input = new Post("");
+    input.$save().then(function(res){
+      alert(res.message);
+    });
+  }
+
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
@@ -23,12 +34,12 @@ angular.module('starter.controllers', [])
 
 /*
 .controller('SignInCtrl', function($scope, $state) {
-  
+
   $scope.signIn = function(user) {
     console.log('Sign-In', user);
     $state.go('tab.dash');
   };
-  
+
 })
 */
 .controller('SignInCtrl',

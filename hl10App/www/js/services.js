@@ -1,5 +1,8 @@
-angular.module('starter.services', ['ionic.utils'])
+angular.module('starter.services', ['ionic.utils', 'ngResource'])
 
+  .factory('Post', function($resource) {
+    return $resource('/profiler',{},{'query':  {method:'GET', isArray:false}});
+  })
 
 .factory('AuthenticationService',
     ['Base64', '$http', '$rootScope', '$timeout',
