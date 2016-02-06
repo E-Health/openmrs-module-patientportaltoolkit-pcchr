@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+angular.module('starter.services', ['ionic.utils'])
 
 
 .factory('AuthenticationService',
@@ -21,7 +21,7 @@ angular.module('starter.services', [])
             */ //$http.post
             /* Use this for real authentication
              ----------------------------------------------*/
-            $http.get("/api", { username: username, password: password })
+            $http.get("/login", { username: username, password: password })
                 .success(function (response) {
                     callback(response);
                 });
@@ -40,11 +40,13 @@ angular.module('starter.services', [])
 
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
             //$cookieStore.put('globals', $rootScope.globals);
+            window.localStorage['globals'] = $rootScope.globals;
         };
 
         service.ClearCredentials = function () {
             $rootScope.globals = {};
             //$cookieStore.remove('globals');
+            window.localStorage['globals'] = null;
             $http.defaults.headers.common.Authorization = 'Basic ';
         };
 
