@@ -8,7 +8,7 @@
         See http://www.liquibase.org/manual/home#available_database_refactorings
         for a list of supported elements and attributes
   -->
-    <changeSet author="beapen" id="20160115-2">
+    <changeSet author="beapen" id="20160207-1">
         <comment>Create the HL10 Profiler Table.
 
         </comment>
@@ -37,10 +37,10 @@
             <column name="numData" type="double" />
             <column name="booldata" type="boolean" />
             <column name="dateTimeData" type="datetime" />
+            <column defaultValue="false" name="hasMore" type="boolean" />
             <column name="segmentName" type="varchar(255)" />
             <column name="segmentCode" type="varchar(40)" />
             <column defaultValue="SNOMED-CT" name="segmentNs" type="varchar(40)" />
-            <column defaultValue="0" name="SegmentIndex" type="int" />
             <column name="prevUuid" type="char(38)" />
             <column defaultValue="default" name="dataStatus" type="varchar(255)" />
         </createTable>
