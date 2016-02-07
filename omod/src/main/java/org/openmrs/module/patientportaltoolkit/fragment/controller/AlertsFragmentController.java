@@ -63,7 +63,7 @@ public class AlertsFragmentController {
                            @RequestParam(value = "segmentName", required=false) String segmentName,
                            @RequestParam(value = "segmentCode", required=false) String segmentCode,
                            @RequestParam(value = "segmentNs", required=false) String segmentNs,
-                           @RequestParam(value = "segmentIndex", required=false) int segmentIndex,
+                           @RequestParam(value = "hasMore", required=false) Boolean hasMore,
                            @RequestParam(value = "prevUuid", required=false) String prevUuid,
                            @RequestParam(value = "dataStatus", required=false) String dataStatus) {
 
@@ -117,8 +117,8 @@ public class AlertsFragmentController {
                 pcchr.setSegmentCode(segmentCode);
             if(segmentNs != null)
                 pcchr.setSegmentNs(segmentNs);
-            if(segmentIndex > 0)
-                pcchr.setSegmentIndex(segmentIndex);
+            if(hasMore)
+                pcchr.setHasMore(hasMore);
             if(prevUuid != null)
                 pcchr.setPrevUuid(prevUuid);
             if(dataStatus != null)
