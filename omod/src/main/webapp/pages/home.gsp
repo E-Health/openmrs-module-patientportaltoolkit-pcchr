@@ -5,7 +5,7 @@ ${ ui.includeFragment("patientportaltoolkit", "patientPortalNav") }
         \$('#patientPortalNavHome').addClass('active');
     });
 </script>
-<body>
+
 <div class="container bgcontent col-sm-8 col-sm-offset-2">
     ${ ui.includeFragment("patientportaltoolkit", "profileHeader") }
     <ul class="nav nav-pills">
@@ -39,3 +39,4 @@ ${ ui.includeFragment("patientportaltoolkit", "patientPortalNav") }
     </div>
 </div>
 </body>
+</html>

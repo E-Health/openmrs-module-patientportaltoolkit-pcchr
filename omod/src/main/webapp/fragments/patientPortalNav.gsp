@@ -1,4 +1,4 @@
-
+<html>
 <head>
 <title>OpenMRS Patient Portal</title>
 <link rel="shortcut icon" type="image/ico"
@@ -67,6 +67,7 @@
             src="${ ui.resourceLink("patientportaltoolkit", "/scripts/d3.min.js") }"></script>
 
 </head>
+<body ng-app="pcchr">
 <div class="navbar navbar-default container">
     <button type="button" class="navbar-toggle" data-toggle="collapse"
             data-target=".navbar-responsive-collapse">
