@@ -13,6 +13,33 @@
 	src="${ ui.resourceLink("uicommons", "/scripts/underscore-min.js")}"></script>
 
 <script type="text/javascript"
+    src="${ ui.resourceLink("uicommons", "/scripts/angular.js")}"></script>
+<script type="text/javascript"
+    src="${ ui.resourceLink("uicommons", "/scripts/angular-resource.min.js")}"></script>
+<script type="text/javascript"
+    src="${ ui.resourceLink("uicommons", "/scripts/ngDialog/ngDialog.js")}"></script>
+<script type="text/javascript"
+    src="${ ui.resourceLink("patientportaltoolkit", "/scripts/app.js")}"></script>
+<script type="text/javascript"
+    src="${ ui.resourceLink("patientportaltoolkit", "/scripts/controllers.js")}"></script>
+<script type="text/javascript"
+    src="${ ui.resourceLink("patientportaltoolkit", "/scripts/services.js")}"></script>
+<script type="text/javascript"
+    src="${ ui.resourceLink("patientportaltoolkit", "/scripts/xeditable.min.js")}"></script>
+<script type="text/javascript"
+    src="${ ui.resourceLink("patientportaltoolkit", "/scripts/angular-dragdrop.min.js")}"></script>
+<link rel="stylesheet"
+    href="${ ui.resourceLink("uicommons", "styles/ngDialog/ngDialog.min.css") }"
+    type="text/css">
+<link rel="stylesheet"
+          href="${ ui.resourceLink("patientportaltoolkit", "styles/xeditable.css") }"
+          type="text/css">
+
+
+
+
+
+<script type="text/javascript"
 	src="${ ui.resourceLink("uicommons", "/scripts/jquery.toastmessage.js")}"></script>
 <script type="text/javascript"
 	src="${ ui.resourceLink("uicommons", "/scripts/jquery.simplemodal.1.4.4.min.js")}"></script>
