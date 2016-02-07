@@ -24,8 +24,7 @@ jQuery(document).ready(function() {
             dataCode: dataCode,
             dataNs: dataNs,
             numData: bloodGlucose,
-            dataUnitNs: dataNs,
-            segmentIndex: 0
+            dataUnitNs: dataNs
             },
                 function(data) {
                     jQuery("#responds").empty();
@@ -58,8 +57,7 @@ jQuery(document).ready(function() {
             dataCode: dataCode,
             dataNs: dataNs,
             numData: bodyWeight,
-            dataUnitNs: dataNs,
-            segmentIndex: 0
+            dataUnitNs: dataNs
             },
                 function(data) {
                     jQuery("#responds").empty();

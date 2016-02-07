@@ -78,6 +78,8 @@ public class AddReadingFragmentController {
            endTime = Calendar.getInstance().getTime();
         if(dataType == null)
            dataType = "C";
+        if(hasMore == null)
+           hasMore = false;
        
 
 
