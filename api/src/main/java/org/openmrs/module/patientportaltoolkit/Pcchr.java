@@ -92,7 +92,7 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     }
 
     //Set the Time to current
-    public void setTime() {
+    private void setTime() {
         Calendar cal = Calendar.getInstance();
         startTime = cal.getTime();
         endTime = cal.getTime();

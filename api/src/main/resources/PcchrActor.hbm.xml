@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.openmrs.module.patientportaltoolkit">
+
+    <class table="hl10_actor" name="PcchrActor">
+        <id name="id" type="int" column="id"  unsaved-value="0">
+            <generator class="native" />
+        </id>
+        <discriminator column="id" insert="false" />
+        <property name="uuid" type="java.lang.String" column="uuid"
+            length="38" unique="true" />
+        <many-to-one name="patient" column="patientId" class="org.openmrs.Patient"/>
+        <property name="patientUuid" type="java.lang.String" column="patientUuid" length="38" />
+        <property name="actorId" type="java.lang.String" column="actorId" />
+        <property name="actorUuid" type="java.lang.String" column="actorUuid" length="38" />
+        <property name="startTime" type="java.util.Date" column="startTime"
+                  length="38" />
+        <property name="endTime" type="java.util.Date" column="endTime"
+                  length="38" />
+        <property name="valid" type="boolean" column="valid" length="1"/>
+        <property name="dataStatus" type="java.lang.String" column="dataStatus" length="255" />
+
+    </class>
+
+
+</hibernate-mapping>
