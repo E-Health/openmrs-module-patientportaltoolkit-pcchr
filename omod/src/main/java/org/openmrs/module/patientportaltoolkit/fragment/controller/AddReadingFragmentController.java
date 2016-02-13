@@ -154,6 +154,7 @@ public class AddReadingFragmentController {
         //if(properties == null)
         String[] properties = new String[] {"id", "dataName", "dataCode", "dataType", "charData", "startTime", "endTime", "numData", "boolData", "dateTimeData"};
         List<Pcchr> pcchrs = service.getAllPcchrs(patient);
+        Collections.reverse(pcchrs);
         return SimpleObject.fromCollection(pcchrs, ui, properties);
     }
 
