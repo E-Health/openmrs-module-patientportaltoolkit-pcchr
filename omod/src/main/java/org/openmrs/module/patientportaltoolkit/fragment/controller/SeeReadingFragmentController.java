@@ -62,7 +62,7 @@ public class SeeReadingFragmentController {
         Pcchr pcchr = new Pcchr();
 
         //if(properties == null)
-        String[] properties = new String[] {"dataName", "dataCode", "numData"};
+        String[] properties = new String[] {"id", "dataName", "dataCode", "dataType", "charData", "numData", "boolData", "dateTimeData"};
         List<Pcchr> pcchrs = service.getAllPcchrs(patient);
         return SimpleObject.fromCollection(pcchrs, ui, properties);
     }

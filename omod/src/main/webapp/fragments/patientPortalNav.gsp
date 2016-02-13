@@ -28,6 +28,12 @@
     src="${ ui.resourceLink("patientportaltoolkit", "/scripts/xeditable.min.js")}"></script>
 <script type="text/javascript"
     src="${ ui.resourceLink("patientportaltoolkit", "/scripts/angular-dragdrop.min.js")}"></script>
+<script type="text/javascript"
+    src="${ ui.resourceLink("patientportaltoolkit", "/scripts/react.min.js")}"></script>
+<script type="text/javascript"
+    src="${ ui.resourceLink("patientportaltoolkit", "/scripts/react-dom.min.js")}"></script>
+<script type="text/javascript"
+    src="${ ui.resourceLink("patientportaltoolkit", "/scripts/react-code.js")}"></script>
 <link rel="stylesheet"
     href="${ ui.resourceLink("uicommons", "styles/ngDialog/ngDialog.min.css") }"
     type="text/css">
