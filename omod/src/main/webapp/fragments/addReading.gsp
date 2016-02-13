@@ -64,6 +64,7 @@ var PcchrForm = React.createClass({
         <BloodSugarForm onCommentSubmit={this.handleCommentSubmit} />
         <BodyWeightForm onCommentSubmit={this.handleCommentSubmit} />
         <LDLForm onCommentSubmit={this.handleCommentSubmit} />
+        <HDLForm onCommentSubmit={this.handleCommentSubmit} />
   
       </div>
     );
@@ -144,6 +145,37 @@ var PcchrList = React.createClass({
 });
 
 /////////////////////////////////////////Forms///////////////////////////////////////
+var HDLForm = React.createClass({
+  getInitialState: function() {
+    return {pcchr: ''};
+  },
+  handlePcchrChange: function(e) {
+    this.setState({pcchr: e.target.value});
+  },
+  handleSubmit: function(e) {
+    e.preventDefault();
+    var pcchr = this.state.pcchr.trim();
+    var data_name = 'HDL';
+    var data_code = '9422000';
+    if (!pcchr) {
+      return;
+    }
+    this.props.onCommentSubmit({dataName: data_name, dataCode: data_code, numData: pcchr});
+    this.setState({pcchr: ''});
+  },
+  render: function() {
+    return (
+      <form className="pcchrForm" onSubmit={this.handleSubmit}>
+      <div className="input-group">
+        <input value={this.state.pcchr} onChange={this.handlePcchrChange} id="hdl" type="text" className="form-control" placeholder="Your HDL Level" />
+        <span className="input-group-addon" id="basic-addon2">mg/dl</span>
+        <input type="submit" className="btn btn-success pull-right" id="HDLSave" />
+      </div>
+      </form>
+    );
+  }
+});
+
 var LDLForm = React.createClass({
   getInitialState: function() {
     return {pcchr: ''};
@@ -188,7 +220,7 @@ var BloodSugarForm = React.createClass({
     e.preventDefault();
     var pcchr = this.state.pcchr.trim();
     var data_name = 'Blood Sugar';
-    var data_code = '144194009';
+    var data_code = '365812005';
     if (!pcchr) {
       return;
     }
@@ -200,7 +232,7 @@ var BloodSugarForm = React.createClass({
       <form className="pcchrForm" onSubmit={this.handleSubmit}>
       <div className="input-group">
         <input value={this.state.pcchr} onChange={this.handlePcchrChange} id="glucose" type="text" className="form-control" placeholder="Your Blood Glucose Reading" />
-        <span className="input-group-addon" id="basic-addon2">mg/DL</span>
+        <span className="input-group-addon" id="basic-addon2">mg/dl</span>
         <input type="submit" className="btn btn-success pull-right" id="GlucoseSave" />
       </div>
       </form>
