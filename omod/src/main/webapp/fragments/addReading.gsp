@@ -72,6 +72,7 @@ jQuery(document).ready(function() {
     <script type="text/babel">
       // To get started with this tutorial running your own code, simply remove
       // the script tag loading scripts/example.js and start writing code here.
+      
         ReactDOM.render(
           <PcchrBox geturl="${ ui.actionLink("getAllHl10", [returnFormat: "json"]) }" 
           patientid="${ patient.id }" 
