@@ -7,7 +7,7 @@ jQuery(document).ready(function() {
 
     //##### Delete record when Delete Button is clicked #########
 jQuery(".btn-delete").click(function (e) {
-
+/*
     e.preventDefault();
     var hl10Id = jQuery(this).attr("value");
     jQuery.post('${ ui.actionLink("purgeHl10") }',
@@ -24,13 +24,24 @@ jQuery(".btn-delete").click(function (e) {
                 jQuery("#responds").append(response);
             })
 
+
+        e.preventDefault();
+        jQuery.getJSON('${ ui.actionLink("getAllHl10", [returnFormat: "json"]) }', { patientId: ${ patient.id } },
+
+                function(data) {
+                    response = data.message;
+                    
+                    alert(data);
+                    
+                });
+*/
 });
 
 
 });  //JQuery Document Ready
 
 </script>
-<div>
+<div ng-controller="getHl10">
 <%
 def props = config.properties ?: ["id", "dataName", "dataCode", "dataType", "charData", "numData", "boolData", "dateTimeData"]
 %>
@@ -47,7 +58,7 @@ def props = config.properties ?: ["id", "dataName", "dataCode", "dataType", "cha
                 <td><%= ui.format(enc."${prop}") %></td>
                 <% } %>
                 <td>
-                    <button type="button" class="btn btn-delete" value="${ enc.id }">Delete</button>
+                    <button ng-click="getPcchr('${ patient.id }')" type="button" class="btn btn-delete" value="${ enc.id }">Delete</button>
                 </td>
                 </tr>
                 <% } %>

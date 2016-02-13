@@ -35,6 +35,11 @@ public class SeeReadingFragmentController {
         List<Pcchr> pcchrs = service.getAllPcchrs(patient);
         //model.addAttribute("patient", patient);
         model.addAttribute("pcchrs", SimpleObject.fromCollection(pcchrs, ui, properties));
+        if (patient != null)
+            model.addAttribute("patient", patient);
+        else
+            model.addAttribute("patient", null);
+
     }
 
 
@@ -47,28 +52,8 @@ public class SeeReadingFragmentController {
      */
 
     public Object getAllHl10(@RequestParam(value = "patientId", required=true) int patientId,
-                             @RequestParam(value = "patientUuid", required=false) String patientUuid,
-                             @RequestParam(value = "profilerId", required=false) String profilerId,
-                             @RequestParam(value = "profilerUuid", required=false) String profilerUuid,
-                             @RequestParam(value = "startTime", required=false) Date startTime,
-                             @RequestParam(value = "endTime", required=false) Date endTime,
-                             @RequestParam(value = "dataType", required=false) String dataType,
-                             @RequestParam(value = "dataName", required=false) String dataName,
-                             @RequestParam(value = "dataCode", required=false) String dataCode,
-                             @RequestParam(value = "dataNs", required=false) String dataNs,
-                             @RequestParam(value = "dataUnit", required=false) String dataUnit,
-                             @RequestParam(value = "dataUnitNs", required=false) String dataUnitNs,
-                             @RequestParam(value = "charData", required=false) String charData,
-                             @RequestParam(value = "numData", required=false) Double numData,
-                             @RequestParam(value = "boolData", required=false) Boolean boolData,
-                             @RequestParam(value = "dateTimeData", required=false) Date dateTimeData,
-                             @RequestParam(value = "segmentName", required=false) String segmentName,
-                             @RequestParam(value = "segmentCode", required=false) String segmentCode,
-                             @RequestParam(value = "segmentNs", required=false) String segmentNs,
-                             @RequestParam(value = "segmentIndex", required=false) int segmentIndex,
-                             @RequestParam(value = "prevUuid", required=false) String prevUuid,
-                             @RequestParam(value = "dataStatus", required=false) String dataStatus,
-                             @RequestParam(value = "properties", required = false) String[] properties,
+                             //@RequestParam(value = "patientUuid", required=false) String patientUuid,
+                             //@RequestParam(value = "properties", required = false) String[] properties,
                              UiUtils ui) {
 
         PcchrService service = Context.getService(PcchrService.class);
@@ -76,8 +61,8 @@ public class SeeReadingFragmentController {
         Patient patient = patientService.getPatient(patientId);
         Pcchr pcchr = new Pcchr();
 
-        if(properties == null)
-            properties = new String[] {"id", "dataName", "dataCode", "dataType", "charData", "numData", "boolData", "dateTimeData"};
+        //if(properties == null)
+        String[] properties = new String[] {"dataName", "dataCode", "numData"};
         List<Pcchr> pcchrs = service.getAllPcchrs(patient);
         return SimpleObject.fromCollection(pcchrs, ui, properties);
     }
