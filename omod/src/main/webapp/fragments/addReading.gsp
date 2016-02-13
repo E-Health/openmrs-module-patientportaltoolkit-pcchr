@@ -67,3 +67,17 @@ jQuery(document).ready(function() {
 
 </div>
 
+
+    <div id="pcchr-content"></div>
+    <script type="text/babel">
+      // To get started with this tutorial running your own code, simply remove
+      // the script tag loading scripts/example.js and start writing code here.
+        ReactDOM.render(
+          <PcchrBox geturl="${ ui.actionLink("getAllHl10", [returnFormat: "json"]) }" 
+          patientid="${ patient.id }" 
+          posturl="${ ui.actionLink("saveHl10") }" pollInterval={5000} />,
+          document.getElementById('pcchr-content')
+        );
+
+    </script>
+

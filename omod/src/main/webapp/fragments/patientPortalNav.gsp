@@ -32,7 +32,7 @@
     src="${ ui.resourceLink("patientportaltoolkit", "/scripts/react.min.js")}"></script>
 <script type="text/javascript"
     src="${ ui.resourceLink("patientportaltoolkit", "/scripts/react-dom.min.js")}"></script>
-<script type="text/javascript"
+<script type="text/babel"
     src="${ ui.resourceLink("patientportaltoolkit", "/scripts/react-code.js")}"></script>
 <link rel="stylesheet"
     href="${ ui.resourceLink("uicommons", "styles/ngDialog/ngDialog.min.css") }"
