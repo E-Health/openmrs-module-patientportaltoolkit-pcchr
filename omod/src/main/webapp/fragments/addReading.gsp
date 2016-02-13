@@ -63,6 +63,8 @@ var PcchrForm = React.createClass({
       <div className="pcchrBox">
         <BloodSugarForm onCommentSubmit={this.handleCommentSubmit} />
         <BodyWeightForm onCommentSubmit={this.handleCommentSubmit} />
+        <LDLForm onCommentSubmit={this.handleCommentSubmit} />
+  
       </div>
     );
   }
@@ -141,6 +143,37 @@ var PcchrList = React.createClass({
   }
 });
 
+/////////////////////////////////////////Forms///////////////////////////////////////
+var LDLForm = React.createClass({
+  getInitialState: function() {
+    return {pcchr: ''};
+  },
+  handlePcchrChange: function(e) {
+    this.setState({pcchr: e.target.value});
+  },
+  handleSubmit: function(e) {
+    e.preventDefault();
+    var pcchr = this.state.pcchr.trim();
+    var data_name = 'LDL';
+    var data_code = '102739008';
+    if (!pcchr) {
+      return;
+    }
+    this.props.onCommentSubmit({dataName: data_name, dataCode: data_code, numData: pcchr});
+    this.setState({pcchr: ''});
+  },
+  render: function() {
+    return (
+      <form className="pcchrForm" onSubmit={this.handleSubmit}>
+      <div className="input-group">
+        <input value={this.state.pcchr} onChange={this.handlePcchrChange} id="ldl" type="text" className="form-control" placeholder="Your LDL Level" />
+        <span className="input-group-addon" id="basic-addon2">mg/dl</span>
+        <input type="submit" className="btn btn-success pull-right" id="LDLSave" />
+      </div>
+      </form>
+    );
+  }
+});
 
 
 
@@ -205,7 +238,7 @@ var BodyWeightForm = React.createClass({
     );
   }
 });
-
+/////////////////////////////////////////////////////////////////////////////////
 
         ReactDOM.render(
           <PcchrBox geturl="${ ui.actionLink("getAllHl10", [returnFormat: "json"]) }" 
