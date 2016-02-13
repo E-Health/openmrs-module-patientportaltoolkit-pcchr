@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.openmrs.module.patientportaltoolkit">
+
+    <class table="hl10_planner" name="PcchrPlanner">
+        <id name="id" type="int" column="id"  unsaved-value="0">
+            <generator class="native" />
+        </id>
+        <discriminator column="id" insert="false" />
+        <property name="uuid" type="java.lang.String" column="uuid"
+            length="38" unique="true" />
+        <many-to-one name="patient" column="patientId" class="org.openmrs.Patient"/>
+        <property name="patientUuid" type="java.lang.String" column="patientUuid" length="38" />
+        <property name="plannerId" type="java.lang.String" column="plannerId" />
+        <property name="plannerUuid" type="java.lang.String" column="plannerUuid" length="38" />
+        <property name="startTime" type="java.util.Date" column="startTime"
+                  length="38" />
+        <property name="endTime" type="java.util.Date" column="endTime"
+                  length="38" />
+        <property name="plan" type="java.lang.String" column="plan" />
+        <property name="delivered" type="boolean" column="delivered" length="1"/>
+        <property name="lastRecipientId" type="java.lang.String" column="lastRecipientId" />
+        <property name="lastRecipientUuid" type="java.lang.String" column="lastRecipientUuid" length="38" />
+        <property name="dataStatus" type="java.lang.String" column="dataStatus" length="255" />
+
+    </class>
+
+
+</hibernate-mapping>

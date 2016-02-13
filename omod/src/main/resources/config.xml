@@ -76,6 +76,8 @@
 		Reminder.hbm.xml
 		Message.hbm.xml
         Pcchr.hbm.xml
+        PcchrPlanner.hbm.xml
+        PcchrActor.hbm.xml
 	</mappingFiles>
 
 	<!-- Internationalization -->

@@ -8,7 +8,7 @@
         See http://www.liquibase.org/manual/home#available_database_refactorings
         for a list of supported elements and attributes
   -->
-    <changeSet author="beapen" id="20160115-2">
+    <changeSet author="beapen" id="20160207-1">
         <comment>Create the HL10 Profiler Table.
 
         </comment>
@@ -37,17 +37,60 @@
             <column name="numData" type="double" />
             <column name="booldata" type="boolean" />
             <column name="dateTimeData" type="datetime" />
+            <column defaultValue="false" name="hasMore" type="boolean" />
             <column name="segmentName" type="varchar(255)" />
             <column name="segmentCode" type="varchar(40)" />
             <column defaultValue="SNOMED-CT" name="segmentNs" type="varchar(40)" />
-            <column defaultValue="0" name="SegmentIndex" type="int" />
             <column name="prevUuid" type="char(38)" />
             <column defaultValue="default" name="dataStatus" type="varchar(255)" />
         </createTable>
 
     </changeSet>
 
-    <changeSet author="beapen" id="20160117-3">
+    <changeSet author="beapen" id="20160207-2">
+        <comment>Create the HL10 planner Table.
+
+        </comment>
+        <createTable tableName="hl10_planner">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="uuid" type="char(38)" />
+            <column name="patientId" type="char(38)" />
+            <column name="patientUuid" type="char(38)" />
+            <column name="plannerId" type="char(38)" />
+            <column name="plannerUuid" type="char(38)" />
+            <column name="startTime" type="datetime" />
+            <column name="endTime" type="datetime" />
+            <column name="delivered" type="boolean" />
+            <column name="plan" type="text" />
+            <column defaultValue="default" name="dataStatus" type="varchar(255)" />
+        </createTable>
+
+    </changeSet>
+
+    <changeSet author="beapen" id="20160207-3">
+        <comment>Create the HL10 actor Table.
+
+        </comment>
+        <createTable tableName="hl10_actor">
+            <column autoIncrement="true" name="id" type="int">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="uuid" type="char(38)" />
+            <column name="patientId" type="char(38)" />
+            <column name="patientUuid" type="char(38)" />
+            <column name="actorId" type="char(38)" />
+            <column name="actorUuid" type="char(38)" />
+            <column name="startTime" type="datetime" />
+            <column name="endTime" type="datetime" />
+            <column name="valid" type="boolean" />
+            <column defaultValue="default" name="dataStatus" type="varchar(255)" />
+        </createTable>
+
+    </changeSet>
+
+            <changeSet author="beapen" id="20160117-3">
         <comment>Create the Patient Portal Relation Table.
             Created from PatientPortalRelation.hbm.xml
         </comment>

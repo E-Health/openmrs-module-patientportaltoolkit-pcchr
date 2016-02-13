@@ -42,10 +42,10 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     private Double numData;
     private Boolean boolData;
     private Date dateTimeData;
+    private Boolean hasMore;
     private String segmentName;
     private String segmentCode;
     private String segmentNs;
-    private int segmentIndex = 0;
     private String prevUuid;
     private String dataStatus;
 
@@ -92,7 +92,7 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
     }
 
     //Set the Time to current
-    public void setTime() {
+    private void setTime() {
         Calendar cal = Calendar.getInstance();
         startTime = cal.getTime();
         endTime = cal.getTime();
@@ -227,6 +227,14 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
         this.dateTimeData = dateTimeData;
     }
 
+     public Boolean getHasMore() {
+        return hasMore;
+    }
+
+    public void setHasMore(Boolean hasMore) {
+        this.hasMore = hasMore;
+    }
+
     public String getSegmentName() {
         return segmentName;
     }
@@ -249,14 +257,6 @@ public class Pcchr extends BaseOpenmrsObject implements Serializable {
 
     public void setSegmentNs(String segmentNs) {
         this.segmentNs = segmentNs;
-    }
-
-    public int getSegmentIndex() {
-        return segmentIndex;
-    }
-
-    public void setSegmentIndex(int segmentIndex) {
-        this.segmentIndex = segmentIndex;
     }
 
     public String getDataStatus() {

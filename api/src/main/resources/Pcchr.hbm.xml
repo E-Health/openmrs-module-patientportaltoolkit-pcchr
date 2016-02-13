@@ -28,10 +28,10 @@
         <property name="numData" type="double" column="numData" />
         <property name="boolData" type="boolean" column="boolData" length="1"/>
         <property name="dateTimeData" type="java.util.Date" column="dateTimeData" length="38" />
+        <property name="hasMore" type="boolean" column="hasMore" length="1"/>
         <property name="segmentName" type="java.lang.String" column="segmentName" length="255" />
         <property name="segmentCode" type="java.lang.String" column="segmentCode" length="40" />
         <property name="segmentNs" type="java.lang.String" column="segmentNs" length="40" />
-        <property name="segmentIndex" type="int" column="segmentIndex"   not-null="false" />
         <property name="prevUuid" type="java.lang.String" column="prevUuid" length="38" />
         <property name="dataStatus" type="java.lang.String" column="dataStatus" length="255" />
 

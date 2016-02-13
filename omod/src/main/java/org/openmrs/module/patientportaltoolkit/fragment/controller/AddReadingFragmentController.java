@@ -8,15 +8,13 @@ import org.openmrs.api.context.Context;
 import org.openmrs.module.patientportaltoolkit.Pcchr;
 import org.openmrs.module.patientportaltoolkit.api.PcchrService;
 import org.openmrs.ui.framework.SimpleObject;
+import org.openmrs.ui.framework.UiUtils;
 import org.openmrs.ui.framework.annotation.SpringBean;
 import org.openmrs.ui.framework.fragment.FragmentConfiguration;
 import org.openmrs.ui.framework.fragment.FragmentModel;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by Bell on 10/01/2016.
@@ -62,7 +60,7 @@ public class AddReadingFragmentController {
                            @RequestParam(value = "segmentName", required=false) String segmentName,
                            @RequestParam(value = "segmentCode", required=false) String segmentCode,
                            @RequestParam(value = "segmentNs", required=false) String segmentNs,
-                           @RequestParam(value = "segmentIndex", required=false) int segmentIndex,
+                           @RequestParam(value = "hasMore", required=false) Boolean hasMore,
                            @RequestParam(value = "prevUuid", required=false) String prevUuid,
                            @RequestParam(value = "dataStatus", required=false) String dataStatus) {
 
@@ -78,6 +76,8 @@ public class AddReadingFragmentController {
            endTime = Calendar.getInstance().getTime();
         if(dataType == null)
            dataType = "C";
+        if(hasMore == null)
+           hasMore = false;
        
 
 
@@ -116,8 +116,8 @@ public class AddReadingFragmentController {
                 pcchr.setSegmentCode(segmentCode);
             if(segmentNs != null)
                 pcchr.setSegmentNs(segmentNs);
-            if(segmentIndex > 0)
-                pcchr.setSegmentIndex(segmentIndex);
+            if(hasMore)
+                pcchr.setHasMore(hasMore);
             if(prevUuid != null)
                 pcchr.setPrevUuid(prevUuid);
             if(dataStatus != null)
@@ -129,6 +129,48 @@ public class AddReadingFragmentController {
         }
         
         //String message = charData;
+        return SimpleObject.create("message", message);
+
+    }
+
+    /**
+     *
+     * @param patientId PatientId
+     * @param patientUuid as String
+     * @return Object with Message: Added
+     * @should return object with the message added
+     */
+
+    public Object getAllHl10(@RequestParam(value = "patientId", required=true) int patientId,
+                             //@RequestParam(value = "patientUuid", required=false) String patientUuid,
+                             //@RequestParam(value = "properties", required = false) String[] properties,
+                             UiUtils ui) {
+
+        PcchrService service = Context.getService(PcchrService.class);
+        PatientService patientService = Context.getPatientService();
+        Patient patient = patientService.getPatient(patientId);
+        Pcchr pcchr = new Pcchr();
+
+        //if(properties == null)
+        String[] properties = new String[] {"id", "dataName", "dataCode", "dataType", "charData", "startTime", "endTime", "numData", "boolData", "dateTimeData"};
+        List<Pcchr> pcchrs = service.getAllPcchrs(patient);
+        Collections.reverse(pcchrs);
+        return SimpleObject.fromCollection(pcchrs, ui, properties);
+    }
+
+    /**
+     *
+     * @param hl10Id
+     * @return Object with Message: Deleted
+     * @should return object with the message added
+     */
+
+    public Object purgeHl10(@RequestParam(value = "id", required=true) int hl10Id) {
+
+        PcchrService service = Context.getService(PcchrService.class);
+        Pcchr pcchr = service.getPcchr(hl10Id);
+        service.purgePcchr(pcchr);
+        String message = "Deleted";
         return SimpleObject.create("message", message);
 
     }
