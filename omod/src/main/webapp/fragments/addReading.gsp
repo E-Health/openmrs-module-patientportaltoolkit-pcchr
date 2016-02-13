@@ -70,10 +70,11 @@ var PcchrForm = React.createClass({
 });
 
 var Pcchr = React.createClass({
-  handleClick: function() {
-    /*
+  handleClick: function() {   
+    var comment = {};
+    comment.id = this.props.id;
     jQuery.ajax({
-      url: ${ ui.actionLink("purgeHl10") },
+      url: '${ ui.actionLink("purgeHl10") }',
       dataType: 'json',
       type: 'POST',
       returnFormat: 'json',
@@ -85,8 +86,6 @@ var Pcchr = React.createClass({
         console.error(err.toString());
       }.bind(this)
     });
-*/
-alert("here");
   },
 
   render: function() {

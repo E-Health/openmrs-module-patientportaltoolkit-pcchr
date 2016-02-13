@@ -157,5 +157,22 @@ public class AddReadingFragmentController {
         return SimpleObject.fromCollection(pcchrs, ui, properties);
     }
 
+    /**
+     *
+     * @param hl10Id
+     * @return Object with Message: Deleted
+     * @should return object with the message added
+     */
+
+    public Object purgeHl10(@RequestParam(value = "id", required=true) int hl10Id) {
+
+        PcchrService service = Context.getService(PcchrService.class);
+        Pcchr pcchr = service.getPcchr(hl10Id);
+        service.purgePcchr(pcchr);
+        String message = "Deleted";
+        return SimpleObject.create("message", message);
+
+    }
+
 
 }
