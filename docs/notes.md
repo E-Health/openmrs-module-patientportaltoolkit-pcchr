@@ -14,3 +14,10 @@ https://github.com/openmrs/openmrs-module-reporting/blob/master/api/src/main/res
 public enum Gender {
     C, N, B, D
 }
+
+## Webservices Rest to be added to require modules in config.xml
+```
+		<require_module>
+			org.openmrs.module.webservices.rest
+		</require_module>
+```

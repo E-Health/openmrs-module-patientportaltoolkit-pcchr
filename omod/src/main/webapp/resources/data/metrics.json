@@ -1,6 +1,6 @@
 [
    {
-      "gender":"male",
+      "gender":"M",
       "metrics":[
          {
             "name":"LDL",
@@ -252,7 +252,7 @@
       ]
    },
    {
-      "gender":"female",
+      "gender":"F",
       "metrics":[
          {
             "name":"LDL",

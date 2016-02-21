@@ -27,3 +27,10 @@ local.properties
 
 # Mac OS files
 .DS_Store
+
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+node_modules/
+platforms/
+plugins/

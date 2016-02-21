@@ -1,0 +1,15 @@
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+   <form ng-submit="newPost()">
+      <label>New BP Reading:</label>
+      <!--
+      <textarea ng-model="postData.name"></textarea>
+    -->
+      <label>Systolic:</label>
+      <input ng-model="postData.systolic"></input>
+      <label>Diastolic:</label>
+      <input ng-model="postData.diastolic"></input>
+      <button type="submit" class="button button-positive button-block">Add</button>
+    </form>
+  </ion-content>
+</ion-view>

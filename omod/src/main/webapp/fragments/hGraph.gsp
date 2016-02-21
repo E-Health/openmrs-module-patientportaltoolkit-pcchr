@@ -6,10 +6,21 @@ src="${ ui.resourceLink("patientportaltoolkit", "/scripts/HealthGraph.js") }"></
 <script type="text/javascript"
 src="${ ui.resourceLink("patientportaltoolkit", "/scripts/hammer.js") }"></script>
 
+    <% if (pcchrs) { %>
+<div>        
+Gender: ${ person.gender } |
+Mean Body Weight:${ pcchrs["Body Weight"] } |
+Mean Blood Sugar: ${ pcchrs["Blood Sugar"] }
+</div>
+            <% } %>
 
 <script>
         (function () {
-            var gender = 'male'
+            // Mean value passed by the controller
+            var gender = '${ person.gender }';
+            var glucose = ${ pcchrs["Blood Sugar"] };
+            var weight = ${ pcchrs["Body Weight"] };
+
             jQuery(document).ready(function (){
                 jQuery.ajax({
                     method: 'get',
@@ -19,13 +30,14 @@ src="${ ui.resourceLink("patientportaltoolkit", "/scripts/hammer.js") }"></scrip
                     dataType: 'json',
                     async: true,
                     complete: function(jqXHR) {
-                        console.log('fillData complete, jqXHR readyState is ' + jqXHR.readyState);
+                        //console.log('fillData complete, jqXHR readyState is ' + jqXHR.readyState);
 
                         if(jqXHR.readyState === 4) {
 
-                            console.log('jqXHR readyState = 4');
+                            //console.log('jqXHR readyState = 4');
 
                             if(jqXHR.status == 200){
+                                
                                 var randomBetween = function (min, max) {
                                     if (min < 0) {
                                         return min + Math.random() * (Math.abs(min)+max);
@@ -33,8 +45,9 @@ src="${ ui.resourceLink("patientportaltoolkit", "/scripts/hammer.js") }"></scrip
                                         return min + Math.random() * max;
                                     }
                                 };
+                                
                                 var str = jqXHR.responseText; //metrics json
-                                console.log('str = ' + str);
+                                //console.log('str = ' + str);
                                 var json = jQuery.parseJSON(str);
                                 var factors_array = [];
                                 var factor_json;
@@ -59,11 +72,11 @@ src="${ ui.resourceLink("patientportaltoolkit", "/scripts/hammer.js") }"></scrip
                                 else
                                     factor_json = json[1].metrics;
 
-                                console.log(factor_json);
+                                //console.log(factor_json);
                                 for (var i = 0; i < factor_json.length; i++) {
                                     var random = randomBetween(factor_json[i].features.totalrange[0], factor_json[i].features.totalrange[1]);
-                                    console.log(factor_json[i].name);
-                                    console.log(factor_json[i].features);
+                                    //console.log(factor_json[i].name);
+                                    //console.log(factor_json[i].features);
                                     console.log(random);
                                     if ((factor_json[i].name === 'LDL' || factor_json[i].name === 'HDL' || factor_json[i].name === 'Triglycerides') && cholesterol != null)
                                     {
@@ -111,7 +124,18 @@ src="${ ui.resourceLink("patientportaltoolkit", "/scripts/hammer.js") }"></scrip
                                         }
 
 
-                                    }
+                                    }else if (factor_json[i].name === 'Glucose') //Mean value added
+                                    {
+                                        factors_array.push(
+                                                {
+                                                    label: factor_json[i].name,
+                                                    score: HGraph.prototype.calculateScoreFromValue(factor_json[i].features, glucose),
+                                                    value: parseFloat(glucose).toFixed(2) +  ' ' +  factor_json[i].features.unitlabel,
+                                                    weight: factor_json[i].features.weight
+                                                }
+                                        )
+
+                                    }    
                                     else
                                         factors_array.push(
                                                 {
@@ -152,12 +176,9 @@ src="${ ui.resourceLink("patientportaltoolkit", "/scripts/hammer.js") }"></scrip
 </figure>
 		</section>
 </section>
-                            <h2>${ person.gender }</h2>
+                           
 
 
-    <% if (pcchrs) { %>
-<h2>Yes: ${ pcchrs["Body Weight"] }</h2>
-            <% } %>
 
 
                     <div id="responds"></div>
