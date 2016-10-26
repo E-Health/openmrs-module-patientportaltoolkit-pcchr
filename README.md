@@ -1,7 +1,7 @@
 # Patient Controlled and Contributed Health Record
 **openmrs-module-patientportaltoolkit-pcchr**
 
-> ## Work in progress.... 
+> ## Work in progress..... 
 
 master: [![Build Status](https://travis-ci.org/E-Health/openmrs-module-patientportaltoolkit-pcchr.svg?branch=master)](https://travis-ci.org/E-Health/openmrs-module-patientportaltoolkit-pcchr)
 
