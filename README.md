@@ -45,7 +45,7 @@ Expect more on [my blog ](http://nuchange.ca) and the [Prodents wiki](http://wik
 - mvn clean install  (This creates am .omod file in target folder.
 - Install a stand alone version of openMRS from here.
 - Install the omod module file to the openMRS instance.
-- Create a new User for access to PHR
+- Create a new User for access to PHR.
 
 ## If you want to develop:
 - install maven, git and openMRS SDK and setup a 2.x server as explained [here: https://wiki.openmrs.org/display/docs/OpenMRS+SDK](https://wiki.openmrs.org/display/docs/OpenMRS+SDK)
